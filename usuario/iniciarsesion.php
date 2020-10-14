@@ -5,7 +5,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
  
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
+
     //$query = $pdo->prepare("SELECT * FROM tbl_user WHERE nameuser = $username");
     //$query->bindParam("nameuser", $username, PDO::PARAM_STR);
     //$query->execute();
@@ -21,6 +21,11 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
 
         if ($cantidad_usuarios == 1) {
             echo "Logeado";
+
+            $id_user = $resultado_query[0]['idtbl_user'];
+            $_SESSION['autorizado']=true;
+            $_SESSION['idtbl_user']= $id_user;
+
         // echo '<meta http-equiv="refresh" content="1,starter.php">';
         }
         else {
