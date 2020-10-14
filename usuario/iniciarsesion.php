@@ -5,14 +5,28 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
  
     $username = $_POST['username'];
     $password = $_POST['password'];
- 
-    $query = $pdo->prepare("SELECT * FROM users WHERE USERNAME=:username");
-    $query->bindParam("username", $username, PDO::PARAM_STR);
-    $query->execute();
- 
-    $result = $query->fetch(PDO::FETCH_ASSOC);
- 
-    if (!$result) {
+    
+    //$query = $pdo->prepare("SELECT * FROM tbl_user WHERE nameuser = $username");
+    //$query->bindParam("nameuser", $username, PDO::PARAM_STR);
+    //$query->execute();
+    //$result = $query->fetch(PDO::FETCH_ASSOC);
+    $sql_users = "SELECT * FROM tbl_user WHERE nameuser = ? AND contrasena = ?";
+    $resultado_query = $pdo->prepare($sql_users);
+
+        $resultado_query -> execute(array($username, $password));
+
+        $resultado_query = $resultado_query->fetchAll(PDO:: FETCH_ASSOC);
+
+        $cantidad_usuarios = count($resultado_query);
+
+        if ($cantidad_usuarios == 1) {
+            echo "Logeado";
+        // echo '<meta http-equiv="refresh" content="1,starter.php">';
+        }
+        else {
+            echo "Error";
+        }
+    /* if (!$result) {
         echo '<p class="error">Su contraseña o usuario es incorrecto</p>';
     } else {
         if (password_verify($password, $result['PASSWORD'])) {
@@ -22,6 +36,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
             echo '<p class="error">Su contraseña o usuario es incorrecto</p>';
         }
     }
+    */
 }
 ?>
 <!DOCTYPE html>
@@ -57,7 +72,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                 </div>
             </div>
         </nav><br><br><br>
-<form method="post" action="" name="signin-form">
+<form method="post" action="iniciarsesion.php" name="signin-form">
 <label id="insesionlab">Inicio sesión</label><br><br>
     <div class="form-element">
         <label>Usuario</label>
