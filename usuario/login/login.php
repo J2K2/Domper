@@ -1,5 +1,5 @@
 <?php
-include_once ('../dao/conexion.php');
+include_once ('../../dao/conexion.php');
 session_start();
 if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active a la hora de darle "submit" a un formulario
  
@@ -49,28 +49,28 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=evice-width, initial-sacle=1.0">
-    <link rel="icon" type="image/png" href="../img/logo/s.png" />
-    <script src="../js/fonts/fonts.js" crossorigin="anonymous"></script>
-    <link href="../css/fonts/fonts.css" rel="stylesheet" />
-    <link href="../css/fonts/fonts1.css" rel="stylesheet" type="text/css" />
-    <link href="../css/popup.css" rel="stylesheet" />
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/stylesrob.css" rel="stylesheet" />
-    <link href="../css/regist.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../../img/logo/s.png" />
+    <script src="../../js/fonts/fonts.js" crossorigin="anonymous"></script>
+    <link href="../../css/fonts/fonts.css" rel="stylesheet" />
+    <link href="../../css/fonts/fonts1.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/popup.css" rel="stylesheet" />
+    <link href="../../css/styles.css" rel="stylesheet" />
+    <link href="../../css/stylesrob.css" rel="stylesheet" />
+    <link href="../../css/regist.css" rel="stylesheet" />
     <title>Iniciar sesión</title>
 </head>
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.html">Domper</a>
+                <a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#about">Sobre Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#services">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#about">Sobre Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#services">Servicios</a></li>
                         <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#contact">Contáctanos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="iniciarsesion.php">Iniciar Sesion</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="res.php">Registrarse</a></li>
                     </ul>
