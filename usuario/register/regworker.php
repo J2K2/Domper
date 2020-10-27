@@ -14,7 +14,6 @@
         $telfijo = $_POST['telefono_fijo'];
         $user_type = "Usuario";
         //$user_type = $_REQUEST['usertype'];
-    
             $sql_ins_usuar = "INSERT INTO tbl_user (nameuser,contrasena,telefono_fijo,telefono_celular,nombre,apellido,correo,sexo)
             values (?,?,?,?,?,?,?,?)";
             $consulta_sql_ins_usuar = $pdo->prepare($sql_ins_usuar);

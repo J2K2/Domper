@@ -1,6 +1,6 @@
 <?php
     //Incluir la conexion a la base de datos
-    include_once ('../../dao/conexion.php');
+    //include_once ('../../dao/conexion.php');
     //Capturar las variables del formulario HTML
     if ($_POST) {
         $name = $_POST['nombre'];
@@ -8,29 +8,103 @@
         $usuario = $_POST['user_name'];
         $contrasena = $_POST['contrasena'];
         $correo = $_POST['correo'];
+
+
         // Para las opciones con <option> se usa el $_Request al capturar la variable.
         $sexo = $_REQUEST['sexo'];
+        $user_type = $_REQUEST['usertype'];
+        // Condicional para cambiar el valor numerico a valor de texto de la variable usertype
+        if ($user_type == 1) {
+            $user_type = "Trabajador";
+        } 
+        else {
+            $user_type = "Usuario";
+        }
+        // Condicional para cambiar el valor numerico a valor de texto de la variable sexo
+        if ($sexo == 1) {
+            $sexo = "Masculino";
+        } 
+        elseif ($sexo == 2) {
+            $sexo = "Femenino";
+        }
+        else {
+            $sexo = "No binario";
+        }
+
         $telcelular = $_POST['telefono_celular'];
         $telfijo = $_POST['telefono_fijo'];
         $user_type = "Usuario";
-        //$user_type = $_REQUEST['usertype'];
-    
-            $sql_ins_usuar = "INSERT INTO tbl_user (nameuser,contrasena,telefono_fijo,telefono_celular,nombre,apellido,correo,sexo)
-            values (?,?,?,?,?,?,?,?)";
-            $consulta_sql_ins_usuar = $pdo->prepare($sql_ins_usuar);
-            $consulta_sql_ins_usuar -> execute(array($usuario,$contrasena,$telfijo,$telcelular,$name,$apellido,$correo,$sexo));
-            echo"<script>alert('Datos Almacenados');</script>";
+        
+        /* //Crear consulta SQL para enviar el tipo de usuario a la tabla tbl_user_type
+        $sql_ins_usertype = "INSERT INTO tbl_user_type (tipo,tbl_user_idtbl_user)
+            values (?,?)";
+        $consulta_sql_ins_usertype = $pdo->prepare($sql_ins_usertype);
+        $consulta_sql_ins_usertype -> execute(array($user_type,$id_user));
+            echo"<script>alert('CALIDOSO papá');</script>";
+        */
+
+
+
+
         // Consulta para insertar los datos.
-        // Validación para que exista un UNICO usuario
-            $sql_val_user = "SELECT * FROM tbl_user WHERE nameuser = '$usuario'";
+            
+
+
+
+
+
+
+
+
+        
+        /* // Validación para que exista un UNICO usuario
+            $sql_val_user = "SELECT * FROM tbl_user WHERE nameuser = ? ";
             $consulta_sql_val_user = $pdo->prepare($sql_val_user);
-            $consulta_sql_val_user -> execute();
-            $resultado_consul_val = $consulta_sql_val_user->fetchAll();
-           // var_dump($resultado_consul_val);
-        if ($resultado_consul_val > 0) {
+            $consulta_sql_val_user -> execute(array($usuario));
+            $resultado_consul_val = $consulta_sql_val_user->fetchAll(PDO:: FETCH_ASSOC);
+           var_dump($resultado_consul_val);
+           $cantidad_usuarios = count($resultado_consul_val);
+        if ($resultado_consul_val == 0) {
+            echo"<script>alert('Tamos melos');</script>";
+        }
+        else {
             echo"<script>alert('Oppps...error en el Servidor');</script>";
         }
+        */
+        try {
+            $connection_bd = new PDO('mysql:host=localhost; dbname=db_domper_jk', 'root', '');
+            $connection_bd -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connection_bd -> exec('SET CHARACTER SET utf8');
+      
+            $sql_users = "SELECT * FROM tbl_user WHERE nameuser=?";
+            $result_query = $connection_bd->prepare($sql_users);
+      
+            $result_query -> execute(array($usuario));
+      
+            $result_query = $result_query->fetchAll(PDO:: FETCH_ASSOC);
+      
+            $cantidad_usuarios = count($result_query);
+      
+            if ($cantidad_usuarios == 0) {
+
+                $sql_ins_usuar = "INSERT INTO tbl_user (nameuser,contrasena,telefono_fijo,telefono_celular,nombre,apellido,correo,sexo)
+            values (?,?,?,?,?,?,?,?)";
+            $consulta_sql_ins_usuar = $connection_bd->prepare($sql_ins_usuar);
+            $consulta_sql_ins_usuar -> execute(array($usuario,$contrasena,$telfijo,$telcelular,$name,$apellido,$correo,$sexo));
+
+
+              echo "Usuario registrado correctamente! <br>";
+            
+            } else {
+              echo "El email ya se encuentra registrado! <br>";
+            }
+        }
+            catch (Exception $e) {
+            die('Error: '.$e->GetMessage());
+            }
+        
     }
+        
 ?>
 <!DOCTYPE html>
 <html>
@@ -104,13 +178,12 @@
         <input type="number" name="telefono_fijo"/>
     </div>
     <div class="form-element">
-    <!-- <label>Tipo de Usuario</label>
+    <label>Tipo de Usuario</label>
         <select name="usertype">
-            <option value="1">Administrador</option>
+            <option value="1">Trabajador</option>
             <option value="2">Usuario</option>
         </select>
     </div>
-    -->
     <button type="submit" name="register" value="register">Registrarse</button><br><br>
 </form>
 </body>

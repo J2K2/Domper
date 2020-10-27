@@ -1,11 +1,10 @@
 <?php
 include_once ('../../dao/conexion.php');
 session_start();
-if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active a la hora de darle "submit" a un formulario
- 
+if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active a la hora de darle "submit" a un formularioç
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
-
     //$query = $pdo->prepare("SELECT * FROM tbl_user WHERE nameuser = $username");
     //$query->bindParam("nameuser", $username, PDO::PARAM_STR);
     //$query->execute();
@@ -77,7 +76,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                 </div>
             </div>
         </nav><br><br><br>
-<form method="post" action="iniciarsesion.php" name="signin-form">
+<form method="post" action="login.php" name="signin-form">
 <label id="insesionlab">Inicio sesión</label><br><br>
     <div class="form-element">
         <label>Usuario</label>
