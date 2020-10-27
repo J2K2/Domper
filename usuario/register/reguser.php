@@ -1,6 +1,6 @@
 <?php
     //Incluir la conexion a la base de datos
-    //include_once ('../../dao/conexion.php');
+    include_once ('../../dao/conexion.php');
     //Capturar las variables del formulario HTML
     if ($_POST) {
         $name = $_POST['nombre'];
@@ -8,8 +8,8 @@
         $usuario = $_POST['user_name'];
         $contrasena = $_POST['contrasena'];
         $correo = $_POST['correo'];
-
-
+        $telcelular = $_POST['telefono_celular'];
+        $telfijo = $_POST['telefono_fijo'];
         // Para las opciones con <option> se usa el $_Request al capturar la variable.
         $sexo = $_REQUEST['sexo'];
         $user_type = $_REQUEST['usertype'];
@@ -30,81 +30,44 @@
         else {
             $sexo = "No binario";
         }
-
-        $telcelular = $_POST['telefono_celular'];
-        $telfijo = $_POST['telefono_fijo'];
-        $user_type = "Usuario";
-        
-        /* //Crear consulta SQL para enviar el tipo de usuario a la tabla tbl_user_type
-        $sql_ins_usertype = "INSERT INTO tbl_user_type (tipo,tbl_user_idtbl_user)
-            values (?,?)";
-        $consulta_sql_ins_usertype = $pdo->prepare($sql_ins_usertype);
-        $consulta_sql_ins_usertype -> execute(array($user_type,$id_user));
-            echo"<script>alert('CALIDOSO papá');</script>";
-        */
-
-
-
-
-        // Consulta para insertar los datos.
-            
-
-
-
-
-
-
-
-
-        
-        /* // Validación para que exista un UNICO usuario
-            $sql_val_user = "SELECT * FROM tbl_user WHERE nameuser = ? ";
-            $consulta_sql_val_user = $pdo->prepare($sql_val_user);
-            $consulta_sql_val_user -> execute(array($usuario));
-            $resultado_consul_val = $consulta_sql_val_user->fetchAll(PDO:: FETCH_ASSOC);
-           var_dump($resultado_consul_val);
-           $cantidad_usuarios = count($resultado_consul_val);
-        if ($resultado_consul_val == 0) {
-            echo"<script>alert('Tamos melos');</script>";
-        }
-        else {
-            echo"<script>alert('Oppps...error en el Servidor');</script>";
-        }
-        */
-        try {
-            $connection_bd = new PDO('mysql:host=localhost; dbname=db_domper_jk', 'root', '');
-            $connection_bd -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $connection_bd -> exec('SET CHARACTER SET utf8');
-      
             $sql_users = "SELECT * FROM tbl_user WHERE nameuser=?";
-            $result_query = $connection_bd->prepare($sql_users);
+            $result_query = $pdo->prepare($sql_users);
       
             $result_query -> execute(array($usuario));
       
             $result_query = $result_query->fetchAll(PDO:: FETCH_ASSOC);
-      
+            
             $cantidad_usuarios = count($result_query);
       
             if ($cantidad_usuarios == 0) {
-
                 $sql_ins_usuar = "INSERT INTO tbl_user (nameuser,contrasena,telefono_fijo,telefono_celular,nombre,apellido,correo,sexo)
             values (?,?,?,?,?,?,?,?)";
-            $consulta_sql_ins_usuar = $connection_bd->prepare($sql_ins_usuar);
-            $consulta_sql_ins_usuar -> execute(array($usuario,$contrasena,$telfijo,$telcelular,$name,$apellido,$correo,$sexo));
-
-
-              echo "Usuario registrado correctamente! <br>";
-            
+                $consulta_sql_ins_usuar = $pdo->prepare($sql_ins_usuar);
+                $consulta_sql_ins_usuar -> execute(array($usuario,$contrasena,$telfijo,$telcelular,$name,$apellido,$correo,$sexo));
+                echo "<script>alert('Usuario Registrado');</script>";
             } else {
-              echo "El email ya se encuentra registrado! <br>";
+                echo "El usuario ya se encuentra registrado! <br>";
             }
-        }
-            catch (Exception $e) {
-            die('Error: '.$e->GetMessage());
-            }
+            
+            $sql_typeid = "SELECT idtbl_user FROM tbl_user WHERE nameuser = '$usuario' ";
+            
+            $resultado_query_typeid = $pdo->prepare($sql_typeid);
         
+            $resultado_query_typeid -> execute(array($usuario));
+        
+            $resultado_query_typeid = $resultado_query_typeid->fetchAll(PDO:: FETCH_ASSOC);
+            //var_dump(resultado_query_typeid);
+            $cantidad_usuarios = count($resultado_query_typeid);
+                if ($cantidad_usuarios == 1) {
+                    $id_user = $resultado_query_typeid[0]['idtbl_user'];
+                }  
+        //Crear consulta SQL para enviar el tipo de usuario a la tabla tbl_user_type
+            $sql_ins_usertype = "INSERT INTO tbl_user_type (tipo,tbl_user_idtbl_user)
+                values (?,?)";
+        $consulta_sql_ins_usertype = $pdo->prepare($sql_ins_usertype);
+        $consulta_sql_ins_usertype -> execute(array($user_type,$id_user));
+        //echo"<script>alert('CALIDOSO papá');</script>";
     }
-        
 ?>
 <!DOCTYPE html>
 <html>
