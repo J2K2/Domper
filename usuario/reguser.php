@@ -60,7 +60,7 @@
                         <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#contact">Contáctanos</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="iniciarsesion.php">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="registrar.php">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="registrarse.php">Registrarse</a></li>
                     </ul>
                 </div>
             </div>

@@ -60,7 +60,7 @@
                         <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#contact">Contáctanos</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="iniciarsesion.php">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="registrar.php">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="registrarse.php">Registrarse</a></li>
                     </ul>
                 </div>
             </div>
@@ -104,13 +104,16 @@
         <input type="number" name="telefono_fijo"/>
     </div>
     <div class="form-element">
-    <label>Servicio</label>
+    
+    <!-- <label>Servicio</label>
         <select name="service">
             <option value="1">Electricista</option>
             <option value="2">Mecanico</option>
             <option value="3">Soldador</option>
         </select>
     </div>
+    -->
+
     <button type="submit" name="register" value="register">Registrarse</button><br><br>
 </form>
 </body>
