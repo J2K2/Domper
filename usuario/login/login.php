@@ -9,10 +9,13 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
     //$query->bindParam("nameuser", $username, PDO::PARAM_STR);
     //$query->execute();
     //$result = $query->fetch(PDO::FETCH_ASSOC);
-    $sql_users = "SELECT * FROM tbl_user WHERE nameuser = ? AND contrasena = ?";
+    $sql_users = "SELECT * FROM tbl_user WHERE nameuser =:nameuser AND contrasena =:contrasena";
     $resultado_query = $pdo->prepare($sql_users);
+        
+        $resultado_query->bindparam(':nameuser', $username);
+        $resultado_query->bindparam(':contrasena', $password);
 
-        $resultado_query -> execute(array($username, $password));
+        $resultado_query -> execute();
 
         $resultado_query = $resultado_query->fetchAll(PDO:: FETCH_ASSOC);
 
@@ -21,13 +24,14 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
         if ($cantidad_usuarios == 1) {
             echo "<script>alert('Logeado Correctamente');</script>";
 
-            header("Status: 301 Moved Permanently");
-            header("Location: ../perfil/perfil.php");
-            exit;
-
             $id_user = $resultado_query[0]['idtbl_user'];
             $_SESSION['autorizado']=true;
             $_SESSION['idtbl_user']= $id_user;
+
+            //header("Status: 301 Moved Permanently");
+            header("Location: ../perfil/perfil.php");
+            exit;
+
             //echo $id_user;
 
         // echo '<meta http-equiv="refresh" content="1,starter.php">';

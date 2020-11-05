@@ -1,6 +1,19 @@
 <?php
   include_once ('../../dao/conexion.php');
-  $nombre="SELECT nombre FROM tbl_user WHERE idtbl_user=1";
+
+  session_start();
+
+  if (isset($_SESSION['idtbl_user'])) {
+    $sql_buscar="SELECT * FROM tbl_user WHERE idtbl_user=:id";
+    $consulta_buscar=$pdo->prepare($sql_buscar);
+    $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
+    $consulta_buscar->execute();
+    $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
+
+    $user=$resultado_buscar;
+    $user['nombre'];
+  }
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,15 +85,15 @@
 <div class="container">
     <div class="main-body">
     
-          <!-- Breadcrumb -->
+          <!-- Breadcrumb 
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
               <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
           </nav>
-          <!-- /Breadcrumb -->
+           /Breadcrumb -->
     
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -89,10 +102,9 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>John Doe</h4>
+                      <h4><?php echo $user['nameuser'];?></h4>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                      <button class="btn btn-primary">Follow</button>
                       <button class="btn btn-outline-primary">Message</button>
                     </div>
                   </div>
@@ -131,7 +143,7 @@
                       <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo $nombre;?>
+                      <?php echo $user['nombre']." ".$user['apellido'];?>
                     </div>
                   </div>
                   <hr>
@@ -140,34 +152,34 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      fip@jukmuh.al
+                    <?php echo $user['correo'];?>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
+                      <h6 class="mb-0">Teléfono</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                    <?php echo $user['telefono_fijo'];?>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
+                      <h6 class="mb-0">Celular</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
+                    <?php echo $user['telefono_celular'];?>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
+                      <h6 class="mb-0">Cerrar sesión</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                    <a href="../../login/logout.php"><button>Salir</button></a>
                     </div>
                   </div>
                 </div>
@@ -176,24 +188,24 @@
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Satisfacción</i>por estrellas</h6>
+                      <small>5</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <small>Website Markup</small>
+                      <small>4</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <small>One Page</small>
+                      <small>3</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <small>Mobile Template</small>
+                      <small>2</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <small>Backend API</small>
+                      <small>1</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
