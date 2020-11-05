@@ -42,6 +42,11 @@
                 $consulta_sql_ins_usuar = $pdo->prepare($sql_ins_usuar);
                 $consulta_sql_ins_usuar -> execute(array($usuario,$contrasena,$telfijo,$telcelular,$name,$apellido,$correo,$sexo));
                 echo "<script>alert('Usuario Registrado');</script>";
+
+                header("Status: 301 Moved Permanently");
+                header("Location: ../login/login.php");
+                exit;
+
             } else {
                 echo "El usuario ya se encuentra registrado! <br>";
             }
