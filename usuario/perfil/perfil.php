@@ -179,7 +179,7 @@
                       <h6 class="mb-0">Cerrar sesión</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <a href="../../login/logout.php"><button>Salir</button></a>
+                    <a href="../login/logout.php"><button>Salir</button></a>
                     </div>
                   </div>
                 </div>
