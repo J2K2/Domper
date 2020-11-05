@@ -100,10 +100,10 @@
             </div>
         </nav><br><br><br>
 <form method="POST" action="" name="signin-form">
-<label id="insesionlab">Inicio sesión</label><br><br>
+<label id="insesionlab">Registrarse</label><br><br>
     <div class="form-element">
         <label>Nombres</label>
-        <input type="text" name="nombre" pattern="[a-zA-Z0-9]+" required />
+        <input type="text" name="nombre" required />
     </div>
     <div class="form-element">
         <label>Apellidos</label>
@@ -111,7 +111,8 @@
     </div>
     <div class="form-element">
         <label>Nombre de Usuario</label>
-        <input type="text" name="user_name" required />
+        <label>(No uses caracteres especiales)</label>
+        <input type="text" name="user_name" pattern="[a-zA-Z0-9]+" required />
     </div>
     <div class="form-element">
         <label>Contraseña</label>
