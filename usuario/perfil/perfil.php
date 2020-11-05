@@ -12,6 +12,9 @@
 
     $user=$resultado_buscar;
     $user['nombre'];
+
+  }else{
+    header('location: ../../login/login.php');
   }
   
 ?>
