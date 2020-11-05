@@ -1,0 +1,20 @@
+header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+ background-image: url("../img/index/backgroundindex.jpg");
+ background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+.bg-primary {
+background-color: #007bff !important;
+}
+.text-primary {
+color: #000000 !important;
+ }
+hr.divider {
+  max-width: 3.25rem;
+  border-width: 0.2rem;
+  border-color: #000000;
+}
