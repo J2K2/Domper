@@ -83,7 +83,7 @@
     <link href="../../css/popup.css" rel="stylesheet" />
     <link href="../../css/styles.css" rel="stylesheet" />
     <link href="../../css/stylesrob.css" rel="stylesheet" />
-    <link href="../../css/regisandlog.css" rel="stylesheet" />
+    <link href="../../css/regisandlog2.css" rel="stylesheet" />
     <title>Registro de Usuarios</title>
 </head>
 <body>
