@@ -124,10 +124,15 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+                      <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      <?php
+                      $sql_buscar="SELECT nombre,apellido FROM tbl_user WHERE idtbl_user=?";
+                      $consulta_buscar=$pdo->prepare($sql_buscar);
+                      $consulta_buscar=execute(array($sql_buscar));
+                      $resultado_buscar=$consulta_buscar->fetchALL();
+                      ?>
                     </div>
                   </div>
                   <hr>
