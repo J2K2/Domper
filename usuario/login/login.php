@@ -19,17 +19,21 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
         $cantidad_usuarios = count($resultado_query);
 
         if ($cantidad_usuarios == 1) {
-            echo "Logeado";
+            echo "<script>alert('Logeado Correctamente');</script>";
+
+            header("Status: 301 Moved Permanently");
+            header("Location: ../perfil/perfil.php");
+            exit;
 
             $id_user = $resultado_query[0]['idtbl_user'];
             $_SESSION['autorizado']=true;
             $_SESSION['idtbl_user']= $id_user;
-            echo $id_user;
+            //echo $id_user;
 
         // echo '<meta http-equiv="refresh" content="1,starter.php">';
         }
         else {
-            echo "Error";
+            echo "<script>alert('Informacion Incorrecta');</script>";
         }
     /* if (!$result) {
         echo '<p class="error">Su contraseña o usuario es incorrecto</p>';
