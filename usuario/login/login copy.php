@@ -55,33 +55,30 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
     <meta name="viewport" content="width=evice-width, initial-sacle=1.0">
     <link rel="icon" type="image/png" href="../../img/logo/domperfav.png" />
     <script src="../../js/fonts/fonts.js" crossorigin="anonymous"></script>
-    <link href="../../css/fonts/fonts.css" rel="stylesheet" />
-    <link href="../../css/fonts/fonts1.css" rel="stylesheet" type="text/css" />
-    <link href="../../css/popup.css" rel="stylesheet" />
-    <link href="../../css/styles.css" rel="stylesheet" />
-    <link href="../../css/stylesrob.css" rel="stylesheet" />
-    <link href="../../css/regisandlog2.css" rel="stylesheet" />
-    <link href="../../css/domperstyles2.css" rel="stylesheet" /> 
+    <link href="loginform.css" rel="stylesheet">
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"></script>
     <title>Iniciar sesión</title>
 </head>
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#about">Sobre Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#services">Servicios</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/reguser.php">Registrarse</a></li>
-                    </ul>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#about">Sobre Nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#services">Servicios</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Iniciar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/reguser.php">Registrarse</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav><br><br><br>
+            </nav><br><br><br>
 <form method="post" action="login.php" name="signin-form">
 <label id="insesionlab">Inicio sesión</label><br><br>
     <div class="form-element">

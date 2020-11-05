@@ -49,24 +49,22 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=evice-width, initial-sacle=1.0">
-    <link rel="icon" type="image/png" href="../../img/logo/domperfav.png" />
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>bs4 beta login - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="loginform.css" rel="stylesheet">
     <script src="../../js/fonts/fonts.js" crossorigin="anonymous"></script>
-    <link href="../../css/fonts/fonts.css" rel="stylesheet" />
-    <link href="../../css/fonts/fonts1.css" rel="stylesheet" type="text/css" />
-    <link href="../../css/popup.css" rel="stylesheet" />
-    <link href="../../css/styles.css" rel="stylesheet" />
-    <link href="../../css/stylesrob.css" rel="stylesheet" />
-    <link href="../../css/regisandlog2.css" rel="stylesheet" />
-    <link href="../../css/domperstyles2.css" rel="stylesheet" /> 
-    <title>Iniciar sesión</title>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"></script>
 </head>
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -82,18 +80,47 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                 </div>
             </div>
         </nav><br><br><br>
-<form method="post" action="login.php" name="signin-form">
-<label id="insesionlab">Inicio sesión</label><br><br>
-    <div class="form-element">
-        <label>Usuario</label>
-        <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
+<br>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-body">
+              <h1>Login</h1>
+              <p class="text-muted">Sign In to your account</p>
+              <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" placeholder="Username">
+              </div>
+              <div class="input-group mb-4">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Password">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary px-4">Login</button>
+                </div>
+                <div class="col-6 text-right">
+                  <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+            <div class="card-body text-center">
+              <div>
+                <h2>Sign up</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <button type="button" class="btn btn-primary active mt-3">Register Now!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-element">
-        <label>Contraseña</label>
-        <input type="password" name="password" required />
-    </div>
-    <button type="submit" name="login" value="login">Acceder</button><br><br>
-    <div class="opcioncontra"><a href="">¿Olvidaste tu contraseña?</a></div>
-</form>
+  </div>
+
 </body>
 </html>
