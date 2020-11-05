@@ -91,7 +91,6 @@
             <select name="sexo">
                 <option value="1">Masculino</option>
                 <option value="2">Femenino</option>
-                <option value="3">No binario</option>
             </select>
     </div>
     <div class="form-element">
