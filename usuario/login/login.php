@@ -56,7 +56,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
     <link href="../../css/popup.css" rel="stylesheet" />
     <link href="../../css/styles.css" rel="stylesheet" />
     <link href="../../css/stylesrob.css" rel="stylesheet" />
-    <link href="../../css/regist.css" rel="stylesheet" />
+    <link href="../../css/regisandlog.css" rel="stylesheet" />
     <title>Iniciar sesión</title>
 </head>
 <body>
@@ -71,8 +71,8 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#services">Servicios</a></li>
                         <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="iniciarsesion.php">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="res.php">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Iniciar Sesion</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/reguser.php">Registrarse</a></li>
                     </ul>
                 </div>
             </div>
