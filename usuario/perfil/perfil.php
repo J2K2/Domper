@@ -1,3 +1,7 @@
+<?php
+  include_once ('../../dao/conexion.php');
+  $nombre="SELECT nombre FROM tbl_user WHERE idtbl_user=1";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,12 +131,7 @@
                       <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php
-                      $sql_buscar="SELECT nombre,apellido FROM tbl_user WHERE idtbl_user=?";
-                      $consulta_buscar=$pdo->prepare($sql_buscar);
-                      $consulta_buscar=execute(array($sql_buscar));
-                      $resultado_buscar=$consulta_buscar->fetchALL();
-                      ?>
+                      <?php echo $nombre;?>
                     </div>
                   </div>
                   <hr>
