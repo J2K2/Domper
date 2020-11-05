@@ -110,8 +110,7 @@
         <input type="text" name="apellido" required />
     </div>
     <div class="form-element">
-        <label>Nombre de Usuario</label>
-        <label>(No uses caracteres especiales)</label>
+        <label>Nombre de Usuario (No uses caracteres especiales)</label>
         <input type="text" name="user_name" pattern="[a-zA-Z0-9]+" required />
     </div>
     <div class="form-element">
