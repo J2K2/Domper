@@ -27,9 +27,6 @@
         elseif ($sexo == 2) {
             $sexo = "Femenino";
         }
-        else {
-            $sexo = "No binario";
-        }
             $sql_users = "SELECT * FROM tbl_user WHERE nameuser=?";
             $result_query = $pdo->prepare($sql_users);
       
@@ -129,7 +126,6 @@
             <select name="sexo">
                 <option value="1">Masculino</option>
                 <option value="2">Femenino</option>
-                <option value="3">No binario</option>
             </select>
     </div>
     <div class="form-element">
