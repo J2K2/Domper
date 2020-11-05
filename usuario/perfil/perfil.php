@@ -1,3 +1,7 @@
+<?php
+  include_once ('../../dao/conexion.php');
+  $nombre="SELECT nombre FROM tbl_user WHERE idtbl_user=1";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,10 +128,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+                      <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      <?php echo $nombre;?>
                     </div>
                   </div>
                   <hr>
