@@ -142,11 +142,13 @@
 											<input class="form-control form-control-lg" type="password" name="contrasena" placeholder="Crea una contraseña">
 										</div>
 										<div class="form-group">
-											<label>Sexo</label><br>
-											<select name="sexo">
-           		     							<option value="1">Masculino</option>
-            	   								<option value="2">Femenino</option>
-											</select>
+											<label>Sexo</label>
+											<div class="text-center mt-4">
+												<select name="sexo">
+													<option value="1">Masculino</option>
+													<option value="2">Femenino</option>
+												</select>
+											</div>
 										</div>
 										<div class="form-group">
 											<label>Telefono Celular</label>
@@ -157,7 +159,7 @@
 											<input class="form-control form-control-lg" type="text" name="telefono_fijo" placeholder="Digita tu numero de telefono">
 										</div>
 										<div class="form-group">
-										<label>Tipo de Usuario</label><br>	
+										<label>Tipo de Usuario</label>
 											<div class="text-center mt-4">
 												<select name="usertype">	
 													<option value="2">Usuario</option>
