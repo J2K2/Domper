@@ -97,7 +97,7 @@
                 <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portafolio</a></li> -->
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html##contact">Contáctanos</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../usuario/login/login.php">Iniciar Sesion</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../usuario/register/reguser.php">Registrarse</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../usuario/register/signup.php">Registrarse</a></li>
             </ul>
         </div>
     </div>

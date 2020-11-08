@@ -81,7 +81,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                         <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/reguser.php">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/signup.php">Registrarse</a></li>
                     </ul>
                 </div>
             </div>
