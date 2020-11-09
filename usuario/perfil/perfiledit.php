@@ -9,16 +9,67 @@
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
-
     $user=$resultado_buscar;
-    $user['nombre'];
-
-        
-
-  }else{
+    $id_user = $user['idtbl_user'];
+  }
+  else {
     header('location: ../../login/login.php');
   }
   
+  
+    if ($_POST) {
+      // Capturando variables
+      /*
+    $skill1 = $_POST['newskill1'];
+    $skill2 = $_POST['newskill2'];
+    $skill3 = $_POST['newskill3'];
+    $skill4 = $_POST['newskill4'];
+    $skill5 = $_POST['newskill5'];
+
+    $skill_desc1 = $_POST['new_skill_desc1'];
+    $skill_desc2 = $_POST['new_skill_desc2'];
+    $skill_desc3 = $_POST['new_skill_desc3'];
+    $skill_desc4 = $_POST['new_skill_desc4'];
+    $skill_desc5 = $_POST['new_skill_desc5'];
+
+        
+
+      // Llenando habilidades
+    $sql_ins_skills = "INSERT INTO tbl_habilidad (nombre,descripcion,tbl_user_idtbl_user)
+        values (?,?,?)";
+        $con_sql_ins_skills = $pdo->prepare($sql_ins_skills);
+        $con_sql_ins_skills -> execute(array($skill,$skill_desc,$id_user));
+    
+    */
+
+
+
+
+
+
+    // INFO BASIC
+    $nameuser = $user['nameuser'];
+    $newpassword = $_POST['newpassword'];
+    $newfijo = $_POST['newfijo'];
+    $newcelular = $_POST['newcelular'];
+    $newnombres = $_POST['newnombres'];
+    $newapellidos = $_POST['newapellidos'];
+    $newcorreo = $_POST['newcorreo'];
+    $newsexo = $_POST['newsexo'];
+
+    $sql_up_info = "UPDATE tbl_user SET 
+    nameuser='$nameuser', 
+    contrasena='$newpassword', 
+    telefono_fijo='$newfijo', 
+    telefono_celular='$newcelular', 
+    nombre='$newnombres', 
+    apellido='$newapellidos', 
+    correo='$newcorreo', 
+    sexo='$newsexo' 
+    WHERE idtbl_user='$id_user';";
+
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,6 +84,7 @@
     <link href="profile.css" rel="stylesheet">
 </head>
 <body>
+
   <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
@@ -76,18 +128,17 @@
                       <hr>
                             <div class="row">
                             <div class="edit">
-                            <h7>Cargo</h6>
+                            <h6>Cargo</h6>
                             </div>
-                                <div class="col-sm-9 text-secondary">
+                                <div class="col-sm-8 text-secondary">
                                     <input class="form-control" type="text" name="newcargo" placeholder="<?php echo $user['nombre'];?>">
-                        
                                  </div>
                             </div>
                                 <hr>
 
                             <div class="row">
                             <div class="edit">
-                            <h7>Ubicacion</h6>
+                            <h6>Ubicacion</h6>
                             </div>
                                 <div class="col-sm-8 text-secondary">
                                     <input class="form-control" type="text" name="newubi" placeholder="<?php echo $user['nombre'];?>">
@@ -125,7 +176,14 @@
                 </ul>
               </div>
             </div>
-            </form>
+            
+
+
+
+
+
+            
+
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -134,7 +192,7 @@
                       <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="nombres" placeholder="<?php echo $user['nombre'];?>">
+                    <input class="form-control" type="text" name="newnombres" placeholder="<?php echo $user['nombre'];?>">
                     
                     </div>
                   </div>
@@ -146,8 +204,34 @@
                       <h6 class="mb-0">Apellidos</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="apellidos" placeholder="<?php echo $user['apellido'];?>">
+                    <input class="form-control" type="text" name="newapellidos" placeholder="<?php echo $user['apellido'];?>">
                     
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Contraseña</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <input class="form-control" type="text" name="newapellidos" placeholder="<?php echo $user['apellido'];?>">
+                    
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Sexo</h6>
+                    </div>
+                        
+                    <div class="col-sm-9 text-secondary">
+                
+                          <select name="newsexo">
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                          </select>
                     </div>
                   </div>
                   <hr>
@@ -157,7 +241,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="apellidos" placeholder="<?php echo $user['correo'];?>">
+                    <input class="form-control" type="text" name="newcorreo" placeholder="<?php echo $user['correo'];?>">
                     </div>
                   </div>
                   <hr>
@@ -166,7 +250,7 @@
                       <h6 class="mb-0">Teléfono</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="apellidos" placeholder="<?php echo $user['telefono_fijo'];?>">
+                    <input class="form-control" type="number" name="newfijo" placeholder="<?php echo $user['telefono_fijo'];?>">
                     </div>
                   </div>
                   <hr>
@@ -175,10 +259,16 @@
                       <h6 class="mb-0">Celular</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="apellidos" placeholder="<?php echo $user['telefono_celular'];?>">
+                    <input class="form-control" type="number" name="newcelular" placeholder="<?php echo $user['telefono_celular'];?>">
                     </div>
                   </div>
                   <hr>
+
+
+
+
+
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Cerrar sesión</h6>
@@ -189,31 +279,19 @@
                   </div>
                 </div>
               </div>
+              </form>
               <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Satisfacción</i>por estrellas</h6>
-                      <small>5</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>4</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>3</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>2</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>1</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Biografia</i>Informacion General</h6>
+                      <p>
+
+
+                        Hola wenas
+                    
+                    
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -225,7 +303,7 @@
                       
                     
 
-
+                    
                     <input class="form-control" type="text" name="newskill1" placeholder="<?php echo $user['nombre'];?>">
                       <div class="progress mb-3" style="height: 5px">
                         <?php 
@@ -264,8 +342,7 @@
                         <?php 
                             echo "<div class='progress-bar bg-primary' role='progressbar' style='width: "."30%"."' aria-valuenow='"."80'"." aria-valuemin='0' aria-valuemax='100'></div>"
                         ?>
-                      </div>   
-                    </form>
+                      </div>
                     </div>
                   </div>
                 </div>
