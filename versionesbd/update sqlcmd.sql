@@ -1,0 +1,1 @@
+UPDATE tbl_user SET nombre="equisde" WHERE idtbl_user=1;

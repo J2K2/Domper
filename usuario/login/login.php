@@ -53,24 +53,24 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=evice-width, initial-sacle=1.0">
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>Login Domper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../../img/logo/domperfav.png" />
+    <link href="loginform.css" rel="stylesheet">
+    <link href="logincss.css" rel="stylesheet">
     <script src="../../js/fonts/fonts.js" crossorigin="anonymous"></script>
-    <link href="../../css/fonts/fonts.css" rel="stylesheet" />
-    <link href="../../css/fonts/fonts1.css" rel="stylesheet" type="text/css" />
-    <link href="../../css/popup.css" rel="stylesheet" />
-    <link href="../../css/styles.css" rel="stylesheet" />
-    <link href="../../css/stylesrob.css" rel="stylesheet" />
-    <link href="../../css/regisandlog2.css" rel="stylesheet" />
-    <link href="../../css/domperstyles2.css" rel="stylesheet" /> 
-    <title>Iniciar sesión</title>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"></script>
 </head>
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -81,23 +81,52 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                         <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/reguser.php">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../register/signup.php">Registrarse</a></li>
                     </ul>
                 </div>
             </div>
-        </nav><br><br><br>
+        </nav><br><br><br><br><br>
+           
 <form method="post" action="login.php" name="signin-form">
-<label id="insesionlab">Inicio sesión</label><br><br>
-    <div class="form-element">
-        <label>Usuario</label>
-        <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-body">
+              <h1>Iniciar Sesion</h1>
+              <p class="text-muted">Inicia Sesion con tu cuenta</p>
+              <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" name="username" class="form-control" placeholder="Nombre De Usuario">
+              </div>
+              <div class="input-group mb-4">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="Contraseña">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="submit" name="login" value="login" class="btn btn-primary px-4">Enviar</button>
+                </div>
+                <div class="col-6 text-right">
+                  <button type="button" class="btn btn-link px-0"><a href="">¿Olvidaste tu contraseña?</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+            <div class="card-body text-center">
+              <div>
+                <h2>Registrate</h2>
+                <p>Registrate para poder iniciar sesion y disfrutar de Domper</p>
+                <button type="button" class="btn btn-primary active mt-3"><a href="../register/signup.php">Registrarse ahora</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-element">
-        <label>Contraseña</label>
-        <input type="password" name="password" required />
-    </div>
-    <button type="submit" name="login" value="login">Acceder</button><br><br>
-    <div class="opcioncontra"><a href="">¿Olvidaste tu contraseña?</a></div>
+  </div>
 </form>
 </body>
 </html>
