@@ -16,9 +16,12 @@
         // Condicional para cambiar el valor numerico a valor de texto de la variable usertype
         if ($user_type == 1) {
             $user_type = "Trabajador";
-        } 
+		}
+		elseif ($user_type == 2) {
+			$user_type = "Usuario";
+		}
         else {
-            $user_type = "Usuario";
+            $user_type = "Tienda";
         }
         // Condicional para cambiar el valor numerico a valor de texto de la variable sexo
         if ($sexo == 1) {
@@ -164,6 +167,7 @@
 												<select name="usertype">	
 													<option value="2">Usuario</option>
 													<option value="1">Trabajador</option>
+													<option value="3">Tienda</option>
 												</select>
 											</div>
 										</div>
