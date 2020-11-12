@@ -64,6 +64,7 @@
     $newapellidos = $_POST['newapellidos'];
     $newcorreo = $_POST['newcorreo'];
     $newsexo = $_POST['newsexo'];
+    $newcargo = $_POST['newcargo'];
     
     if($newsexo == "1"){
       $newsexo = "Masculino";
@@ -78,7 +79,8 @@
     nombre='$newnombres', 
     apellido='$newapellidos', 
     correo='$newcorreo', 
-    sexo='$newsexo' 
+    sexo='$newsexo',
+    cargo='$newcargo'
     WHERE idtbl_user='$id_user';";
 
       $queryy = $pdo->prepare($query);
@@ -154,7 +156,7 @@
                             <h6>Cargo</h6>
                             </div>
                                 <div class="col-sm-8 text-secondary">
-                                    <input class="form-control" type="text" name="newcargo" placeholder="<?php echo $user['nombre'];?>">
+                                    <input class="form-control" type="text" name="newcargo" value="<?php echo $user['cargo'];?>">
                                  </div>
                             </div>
                                 <hr>
