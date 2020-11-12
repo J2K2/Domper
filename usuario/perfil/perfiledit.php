@@ -17,38 +17,46 @@
   }
   
   
-    if ($_POST) {
-      // Capturando variables
-      /*
-    $skill1 = $_POST['newskill1'];
-    $skill2 = $_POST['newskill2'];
-    $skill3 = $_POST['newskill3'];
-    $skill4 = $_POST['newskill4'];
-    $skill5 = $_POST['newskill5'];
+    if (isset($_POST['editar'])) {
 
-    $skill_desc1 = $_POST['new_skill_desc1'];
-    $skill_desc2 = $_POST['new_skill_desc2'];
-    $skill_desc3 = $_POST['new_skill_desc3'];
-    $skill_desc4 = $_POST['new_skill_desc4'];
-    $skill_desc5 = $_POST['new_skill_desc5'];
+
+      require('../../dao/conexion.php');
+      // echo ("Gonorrea");
+      // $query = "UPDATE tbl_user SET nombre='gas' WHERE idtbl_user='$id_user'";
+      // $queryy = $pdo->prepare($query);
+      // $queryy->execute();
+      // $resultado_buscar=$queryy->fetch(PDO::FETCH_ASSOC);
+
+    //   // Capturando variables
+    //   /*
+    // $skill1 = $_POST['newskill1'];
+    // $skill2 = $_POST['newskill2'];
+    // $skill3 = $_POST['newskill3'];
+    // $skill4 = $_POST['newskill4'];
+    // $skill5 = $_POST['newskill5'];
+
+    // $skill_desc1 = $_POST['new_skill_desc1'];
+    // $skill_desc2 = $_POST['new_skill_desc2'];
+    // $skill_desc3 = $_POST['new_skill_desc3'];
+    // $skill_desc4 = $_POST['new_skill_desc4'];
+    // $skill_desc5 = $_POST['new_skill_desc5'];
 
         
 
-      // Llenando habilidades
-    $sql_ins_skills = "INSERT INTO tbl_habilidad (nombre,descripcion,tbl_user_idtbl_user)
-        values (?,?,?)";
-        $con_sql_ins_skills = $pdo->prepare($sql_ins_skills);
-        $con_sql_ins_skills -> execute(array($skill,$skill_desc,$id_user));
+    //   // Llenando habilidades
+    // $sql_ins_skills = "INSERT INTO tbl_habilidad (nombre,descripcion,tbl_user_idtbl_user)
+    //     values (?,?,?)";
+    //     $con_sql_ins_skills = $pdo->prepare($sql_ins_skills);
+    //     $con_sql_ins_skills -> execute(array($skill,$skill_desc,$id_user));
     
-    */
+    // */
 
-
+  
 
 
 
 
     // INFO BASIC
-    $nameuser = $user['nameuser'];
     $newpassword = $_POST['newpassword'];
     $newfijo = $_POST['newfijo'];
     $newcelular = $_POST['newcelular'];
@@ -56,9 +64,14 @@
     $newapellidos = $_POST['newapellidos'];
     $newcorreo = $_POST['newcorreo'];
     $newsexo = $_POST['newsexo'];
-
-    $sql_up_info = "UPDATE tbl_user SET 
-    nameuser='$nameuser', 
+    
+    if($newsexo == "1"){
+      $newsexo = "Masculino";
+    }else{
+      $newsexo = "Femenino";
+    }
+    
+    $query = "UPDATE tbl_user SET
     contrasena='$newpassword', 
     telefono_fijo='$newfijo', 
     telefono_celular='$newcelular', 
@@ -68,8 +81,18 @@
     sexo='$newsexo' 
     WHERE idtbl_user='$id_user';";
 
+      $queryy = $pdo->prepare($query);
+      $queryy->execute();
+      $resultado_buscar=$queryy->fetch(PDO::FETCH_ASSOC);
 
+
+      if($resultado_buscar){
+        echo ("GG bro");
+      }else{
+        header ("Location: perfil.php");
+      }
     }
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -115,7 +138,7 @@
             </ol>
           </nav>
            <!-- /Breadcrumb -->
-    
+           <form method="POST">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -183,7 +206,7 @@
 
 
             
-
+          
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -192,7 +215,7 @@
                       <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newnombres" placeholder="<?php echo $user['nombre'];?>">
+                    <input class="form-control" type="text" name="newnombres" value="<?php echo $user['nombre'];?>">
                     
                     </div>
                   </div>
@@ -204,7 +227,7 @@
                       <h6 class="mb-0">Apellidos</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newapellidos" placeholder="<?php echo $user['apellido'];?>">
+                    <input class="form-control" type="text" name="newapellidos" value="<?php echo $user['apellido'];?>">
                     
                     </div>
                   </div>
@@ -215,7 +238,7 @@
                       <h6 class="mb-0">Contraseña</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newapellidos" placeholder="<?php echo $user['apellido'];?>">
+                    <input class="form-control" type="text" name="newpassword" value="<?php echo $user['contrasena'];?>">
                     
                     </div>
                   </div>
@@ -241,7 +264,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newcorreo" placeholder="<?php echo $user['correo'];?>">
+                    <input class="form-control" type="text" name="newcorreo" value="<?php echo $user['correo'];?>">
                     </div>
                   </div>
                   <hr>
@@ -250,7 +273,7 @@
                       <h6 class="mb-0">Teléfono</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="number" name="newfijo" placeholder="<?php echo $user['telefono_fijo'];?>">
+                    <input class="form-control" type="number" name="newfijo" value="<?php echo $user['telefono_fijo'];?>">
                     </div>
                   </div>
                   <hr>
@@ -259,7 +282,7 @@
                       <h6 class="mb-0">Celular</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="number" name="newcelular" placeholder="<?php echo $user['telefono_celular'];?>">
+                    <input class="form-control" type="number" name="newcelular" value="<?php echo $user['telefono_celular'];?>">
                     </div>
                   </div>
                   <hr>
@@ -268,14 +291,12 @@
 
 
 
-
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Cerrar sesión</h6>
+                    <button type="submit" class="btn btn-outline-primary" name='editar'>Editar</button>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <a href="../login/logout.php"><button class="btn btn-outline-primary">Salir</button></a>
-                    </div>
+                    <a href="arismendy a perfil.php"><button class="btn btn-outline-primary">Salir</button></a>                    </div>
                   </div>
                 </div>
               </div>
@@ -329,7 +350,7 @@
 
 
 
-                      <input class="form-control" type="text" name="newskill4" placeholder="<?php echo $user['nombre'];?>">
+                      <input class="form-control" type="text" name="newskill4" placeholder="<?php echo $user['apellido'];?>">
                       <div class="progress mb-3" style="height: 5px">
                         <?php 
                             echo "<div class='progress-bar bg-primary' role='progressbar' style='width: 30%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100'></div>"
@@ -337,7 +358,7 @@
                         </div>
 
 
-                    <input class="form-control" type="text" name="newskill5" placeholder="<?php echo $user['nombre'];?>">
+                    <input class="form-control" type="text" name="newskill5" placeholder="<?php echo $user['apellido'];?>">
                       <div class="progress mb-3" style="height: 5px">
                         <?php 
                             echo "<div class='progress-bar bg-primary' role='progressbar' style='width: "."30%"."' aria-valuenow='"."80'"." aria-valuemin='0' aria-valuemax='100'></div>"
