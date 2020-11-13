@@ -4,12 +4,13 @@
   session_start();
 
   if (isset($_SESSION['idtbl_user'])) {
+    //if [$cliente==1] { $vista=1;} para cliente
     $sql_buscar = "SELECT * FROM tbl_user WHERE idtbl_user=:id";
     $consulta_buscar = $pdo->prepare($sql_buscar);
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
-
+    //count para validar
     $user=$resultado_buscar;
     $user['nombre'];
 
@@ -104,6 +105,7 @@
                 </ul>
               </div>
             </div>
+            <!--Desde aquí-->
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -155,6 +157,7 @@
                   <hr>
                 </div>
               </div>
+              <!--Hasta aquí-->
               <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
