@@ -4,16 +4,38 @@
   session_start();
 
   if (isset($_SESSION['idtbl_user'])) {
-    //if [$cliente==1] { $vista=1;} para cliente
-    $sql_buscar = "SELECT * FROM tbl_user WHERE idtbl_user=:id";
+    $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user=:id";
     $consulta_buscar = $pdo->prepare($sql_buscar);
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
     //count para validar
-    $user=$resultado_buscar;
-    $user['nombre'];
+    $cantidad_clientes = count($resultado_buscar);
+    $cliente=$resultado_buscar;
+    $cliente['nombre'];
+    if ($cantidad_clientes==1) { $vista=1;}  //{ $vista_c=1;} Ayuda jeje
 
+    $sql_buscar = "SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user=:id";
+    $consulta_buscar = $pdo->prepare($sql_buscar);
+    $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
+    $consulta_buscar->execute();
+    $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
+    //count para validar
+    $cantidad_trabajadores = count($resultado_buscar);
+    $trabajador=$resultado_buscar;
+    $trabajador['nombre'];
+    if ($cantidad_trabajadores==1) { $vista=1;} //{ $vista_t=1;} Ayuda jeje
+
+    $sql_buscar = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user=:id";
+    $consulta_buscar = $pdo->prepare($sql_buscar);
+    $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
+    $consulta_buscar->execute();
+    $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
+    //count para validar
+    $cantidad_empresas = count($resultado_buscar);
+    $empresa=$resultado_buscar;
+    $empresa['nombre'];
+    if ($cantidad_empresas==1) { $vista=1;} //{ $vista_e=1;} Ayuda jeje
   }else{
     header('location: ../../login/login.php');
   }
@@ -62,7 +84,7 @@
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
           </nav>
-           <!-- /Breadcrumb -->
+            /Breadcrumb -->
     
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -105,6 +127,222 @@
                 </ul>
               </div>
             </div>
+            
+            
+            <!-- <?php if($vista_c==1){ ?>
+            **Desde aquí**
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nombre</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $clientes['nombre']." ".$cliente['apellido'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Teléfono</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $clientes['telefono'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $clientes['correo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Sexo</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $clientes['sexo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+              **Hasta aquí**
+              
+              <?php if($vista_t==1){ ?>
+            **Desde aquí**
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nombre</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $trabajador['nombre']." ".$trabajador['apellido'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['correo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Sexo</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['sexo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Teléfono</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['tel_fijo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Celular</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['tel_celular'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Documento de Identidad</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['doc_iden'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Hoja de vida</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['lifepage'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Validación</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['validacion'];?>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+              **Hasta aquí**
+              
+              <?php if($vista_e==1){ ?> 
+            **Desde aquí**
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nombre</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $empresa['nombre'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Dirección</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $empresa['direccion'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">NIT</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $empresa['nit'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Teléfono</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['tel_fijo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Celular</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['tel_celular'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['correo'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Descripción</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $trabajador['descripcion'];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Validación</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo $user['validacion'];?>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+              **Hasta aquí**-->
+  
+
+
+              <?php if($vista==1){ ?>
             <!--Desde aquí-->
             <div class="col-md-8">
               <div class="card mb-3">
@@ -158,6 +396,8 @@
                 </div>
               </div>
               <!--Hasta aquí-->
+
+              <?php } ?>
               <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
