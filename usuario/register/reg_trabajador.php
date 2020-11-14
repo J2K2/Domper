@@ -16,7 +16,6 @@
         $telefono_celular = $_POST['tel_celular'];
         $documento_identidad = $_POST['doc_iden'];
         $hoja_vida = $_POST['lifepage'];
-        $validacion = $_POST['validacion'];
                 // Condicional para cambiar el valor numerico a valor de texto de la variable sexo
         if ($sexo == 1) {
             $sexo = "Masculino";
@@ -43,19 +42,28 @@
                 $resultado_query_foranea -> execute(array($usuario));
                 $resultado_query_foranea = $resultado_query_foranea->fetchAll(PDO:: FETCH_ASSOC);
                 $cantidad_usuarios = count($resultado_query_foranea);
-                    if ($cantidad_usuarios == 1) {
-                        $id_user = $resultado_query_foranea[0]['idtbl_user'];
-                    }  
-                //registro al cliente
-                $sql_ins_trab = "INSERT INTO tbl_trabajador (nombre,apellido,correo,sexo,tel_fijo,tel_celular,doc_iden,lifepage,validacion,tbl_user_idtbl_user,tbl_tipo_service_idtbl_tipo_service)
-                values (?,?,?,?,?,?,?,?,?,?,?)";
-                $consulta_sql_ins_trab = $pdo->prepare($sql_ins_trab);
-                $consulta_sql_ins_trab -> execute(array($name,$apellido,$correo,$sexo,$telefono_fijo,,$telefono_celular,$documento_identidad,$hoja_vida,$validacion,$id_user,$tipo_service));
-                
-                header("Status: 301 Moved Permanently");
-                header("Location: ../login/login.php");
-                exit;
-
+                if ($cantidad_usuarios == 1) {
+                    $id_user = $resultado_query_foranea[0]['idtbl_user'];
+                }  
+                $sql_doc = "SELECT doc_iden FROM tbl_trabajador WHERE doc_iden = '$documento_identidad' ";
+                $resultado_query_doc = $pdo->prepare($sql_nit);
+                $resultado_query_doc -> execute(array($documento_identidad));
+                $resultado_query_doc = $resultado_query_doc->fetchAll(PDO:: FETCH_ASSOC);
+                $cantidad_usuarios = count($resultado_query_doc);
+                if ($cantidad_usuarios == 0){
+                    $validacion=0;
+                    //registro al cliente
+                    $sql_ins_trab = "INSERT INTO tbl_trabajador (nombre,apellido,correo,sexo,tel_fijo,tel_celular,doc_iden,lifepage,validacion,tbl_user_idtbl_user)
+                    values (?,?,?,?,?,?,?,?,?,?)";
+                    $consulta_sql_ins_trab = $pdo->prepare($sql_ins_trab);
+                    $consulta_sql_ins_trab -> execute(array($name,$apellido,$correo,$sexo,$telefono_fijo,$telefono_celular,$documento_identidad,$hoja_vida,$validacion,$id_user));
+                    
+                    header("Status: 301 Moved Permanently");
+                    header("Location: ../login/login.php");
+                    exit;
+                } else {
+                    echo "Ya hay alguien con ese documento de identidad";
+                }
             } else {
                 echo "El usuario ya se encuentra registrado! <br>";
             }
@@ -145,10 +153,6 @@
     <div class="form-element">
         <label>Hoja de Vida</label>
         <input type="text" name="lifepage" required />
-    </div>
-    <div class="form-element">
-        <label>Validacion</label>
-        <input type="number" name="validacion" required />
     </div>
     <div class="form-element">
     <button type="submit" name="register" value="register">Registrarse</button><br><br>

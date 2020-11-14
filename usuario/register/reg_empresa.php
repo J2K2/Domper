@@ -15,14 +15,6 @@
         $telefono_celular = $_POST['tel_celular'];
         $correo = $_POST['correo'];
         $descripcion = $_REQUEST['descripcion'];
-        $validacion = $_POST['validacion'];
-        // Condicional para cambiar el valor numerico a valor de texto de la variable sexo
-        if ($sexo == 1) {
-            $sexo = "Masculino";
-        } 
-        elseif ($sexo == 2) {
-            $sexo = "Femenino";
-        }
         if ($contrasena==$confirmar) {
             $sql_users = "SELECT * FROM tbl_user WHERE nameuser=?";
             $result_query = $pdo->prepare($sql_users);
@@ -42,19 +34,29 @@
                 $resultado_query_foranea -> execute(array($usuario));
                 $resultado_query_foranea = $resultado_query_foranea->fetchAll(PDO:: FETCH_ASSOC);
                 $cantidad_usuarios = count($resultado_query_foranea);
-                    if ($cantidad_usuarios == 1) {
-                        $id_user = $resultado_query_foranea[0]['idtbl_user'];
-                    }  
-                //registro a la empresa
-                $sql_ins_emp = "INSERT INTO tbl_empresa (nombre,direccion,nit,tel_fijo,tel_celular,correo,descripcion,validacion,tbl_user_idtbl_user,tbl_tipo_service_idtbl_tipo_service)
-                values (?,?,?,?,?,?,?,?,?,?)";
-                $consulta_sql_ins_cli = $pdo->prepare($sql_ins_cli);
-                $consulta_sql_ins_cli -> execute(array($name,$direccion,$nit,$telefono_fijo,$telefono_celular,$correo,$descripcion,$validacion,$id_user,$tipo_service));
-                
-                header("Status: 301 Moved Permanently");
-                header("Location: ../login/login.php");
-                exit;
+                if ($cantidad_usuarios == 1) {
+                    $id_user = $resultado_query_foranea[0]['idtbl_user'];
+                }  
+                $sql_nit = "SELECT nit FROM tbl_empresa WHERE nit = '$nit' ";
+                $resultado_query_nit = $pdo->prepare($sql_nit);
+                $resultado_query_nit -> execute(array($nit));
+                $resultado_query_nit = $resultado_query_nit->fetchAll(PDO:: FETCH_ASSOC);
+                $cantidad_usuarios = count($resultado_query_nit);
+                if ($cantidad_usuarios == 0){
+                    $validacion=0;
+                    //registro a la empresa
+                    $sql_ins_emp = "INSERT INTO tbl_empresa (nombre,direccion,nit,tel_fijo,tel_celular,correo,descripcion,validacion,tbl_user_idtbl_user)
+                    values (?,?,?,?,?,?,?,?,?)";
+                    $consulta_sql_ins_emp = $pdo->prepare($sql_ins_emp);
+                    $consulta_sql_ins_emp -> execute(array($name,$direccion,$nit,$telefono_fijo,$telefono_celular,$correo,$descripcion,$validacion,$id_user));
+                    
+                    header("Status: 301 Moved Permanently");
+                    header("Location: ../login/login.php");
+                    exit;
 
+                }else{
+                    echo "Ya hay una empresa con este número de NIT";
+                }
             } else {
                 echo "El usuario ya se encuentra registrado! <br>";
             }
@@ -99,7 +101,7 @@
 <form method="POST" action="" name="signin-form">
 <label id="insesionlab">Registrarse</label><br><br>
     <div class="form-element">
-        <label>Nombres</label>
+        <label>Nombre</label>
         <input type="text" name="nombre" required />
     </div>
     <div class="form-element">
@@ -137,10 +139,6 @@
     <div class="form-element">
         <label>Descripcion</label>
         <input type="text" name="descripcion" required />
-    </div>
-    <div class="form-element">
-        <label>Validacion</label>
-        <input type="number" name="descripcion" required />
     </div>
     <div class="form-element">
     <button type="submit" name="register" value="register">Registrarse</button><br><br>
