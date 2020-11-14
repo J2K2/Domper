@@ -127,7 +127,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $clientes['correo'];?>
+                    <?php echo $cliente['correo'];?>
                     </div>
                   </div>
                   <hr>
@@ -137,7 +137,7 @@
                       <h6 class="mb-0">Sexo</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $clientes['sexo'];?>
+                    <?php echo $cliente['sexo'];?>
                     </div>
                   </div>
                   <hr>
