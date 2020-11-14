@@ -398,6 +398,10 @@
               <!--Hasta aquí-->
 
               <?php } ?>
+              <?php } ?>
+              <?php } ?>
+              <?php } ?>
+              
               <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
@@ -460,8 +464,6 @@
     </div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	
-</script>
+<script type="text/javascript"></script>
 </body>
 </html>
