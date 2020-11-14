@@ -16,7 +16,7 @@
         $telefono_celular = $_POST['tel_celular'];
         $documento_identidad = $_POST['doc_iden'];
         $hoja_vida = $_POST['lifepage'];
-                // Condicional para cambiar el valor numerico a valor de texto de la variable sexo
+        // Condicional para cambiar el valor numerico a valor de texto de la variable sexo
         if ($sexo == 1) {
             $sexo = "Masculino";
         } 
