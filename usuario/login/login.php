@@ -22,19 +22,55 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
         $cantidad_usuarios = count($resultado_query);
 
         if ($cantidad_usuarios == 1) {
+          $id_user = $resultado_query[0]['idtbl_user'];
+          $_SESSION['autorizado']=true;
+          $_SESSION['idtbl_user']= $id_user;
+
+          $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user=:id";
+          $consulta_buscar = $pdo->prepare($sql_buscar);
+          $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
+          $consulta_buscar->execute();
+          $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
+          //count para validar
+          $cantidad_clientes = count($resultado_buscar);
+
+          $sql_buscar_tra = "SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user=:id";
+          $consulta_buscar_tra = $pdo->prepare($sql_buscar_tra);
+          $consulta_buscar_tra->bindparam(':id',$_SESSION['idtbl_user']);
+          $consulta_buscar_tra->execute();
+          $resultado_buscar_tra=$consulta_buscar_tra->fetch(PDO::FETCH_ASSOC);
+          //count para validar
+          $cantidad_trabajadores = count($resultado_buscar_tra);
+
+          $sql_buscar_emp = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user=:id";
+          $consulta_buscar_emp = $pdo->prepare($sql_buscar_emp);
+          $consulta_buscar_emp->bindparam(':id',$_SESSION['idtbl_user']);
+          $consulta_buscar_emp->execute();
+          $resultado_buscar_emp=$consulta_buscar_emp->fetch(PDO::FETCH_ASSOC);
+          //count para validar
+          $cantidad_empresas = count($resultado_buscar_emp);
+          
+          if ($cantidad_clientes==1) {
             echo "<script>alert('Logeado Correctamente');</script>";
-
-            $id_user = $resultado_query[0]['idtbl_user'];
-            $_SESSION['autorizado']=true;
-            $_SESSION['idtbl_user']= $id_user;
-
-            //header("Status: 301 Moved Permanently");
-            header("Location: ../perfil/perfil.php");
+            header("Location: ../perfil/perfil_cliente.php");
             exit;
-
-            //echo $id_user;
-
-        // echo '<meta http-equiv="refresh" content="1,starter.php">';
+          } elseif ($cantidad_empresas==1){
+            if ($resultado_buscar_emp['validacion']==1){
+              echo "<script>alert('Logeado Correctamente')</script>";
+              header("Location: ../perfil/perfil_empresa.php");
+              exit;
+            }else{
+              echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
+            }
+          } elseif ($cantidad_trabajadores==1){
+            if ($resultado_buscar_tra['validacion']==1){
+              echo "<script>alert('Logeado Correctamente');</script>";
+              header("Location: ../perfil/perfil_trabajador.php");
+              exit;
+            }else{
+              echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
+            }
+          }
         }
         else {
             echo "<script>alert('Informacion Incorrecta');</script>";

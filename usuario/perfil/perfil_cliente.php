@@ -9,22 +9,7 @@
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
-    //count para validar
-    $cantidad_clientes = count($resultado_buscar);
-    $sql_buscar = "SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user=:id";
-    $consulta_buscar = $pdo->prepare($sql_buscar);
-    $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
-    $consulta_buscar->execute();
-    $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
-    //count para validar
-    $cantidad_trabajadores = count($resultado_buscar);
-    $sql_buscar = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user=:id";
-    $consulta_buscar = $pdo->prepare($sql_buscar);
-    $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
-    $consulta_buscar->execute();
-    $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
-    //count para validar
-    $cantidad_empresas = count($resultado_buscar);
+    $cliente=$resultado_buscar;
   }else{
     header('location: ../../login/login.php');
   }
@@ -124,7 +109,7 @@
                       <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo $clientes['nombre']." ".$cliente['apellido'];?>
+                      <?php echo $cliente['nombre']." ".$cliente['apellido'];?>
                     </div>
                   </div>
                   <hr>
@@ -133,7 +118,7 @@
                       <h6 class="mb-0">Teléfono</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $clientes['telefono'];?>
+                    <?php echo $cliente['telefono'];?>
                     </div>
                   </div>
                   <hr>
