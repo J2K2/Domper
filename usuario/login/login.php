@@ -33,21 +33,18 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
           
           //count para validar
           $cantidad_trabajadores = count($resultado_buscar_tra);
-          var_dump($resultado_buscar_tra);
           $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar = $pdo->prepare($sql_buscar);
           $consulta_buscar->execute(array($id_user));
           $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_clientes = count($resultado_buscar);
-          var_dump($resultado_buscar);
           $sql_buscar_emp = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar_emp = $pdo->prepare($sql_buscar_emp);
           $consulta_buscar_emp->execute(array($id_user));
           $resultado_buscar_emp=$consulta_buscar_emp->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_empresas = count($resultado_buscar_emp);
-          var_dump($resultado_buscar_emp);
           if ($cantidad_clientes == 7) {
             echo "<script>alert('Logeado Correctamente cliente');</script>";
             header("Location: ../perfil/perfil_cliente.php");
@@ -60,6 +57,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
               exit;
             }else{
               echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
+              header("location: login.php");
             }
           } elseif ($cantidad_trabajadores == 11){
             if ($resultado_buscar_tra['validacion'] == 1){
@@ -68,12 +66,15 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
               exit;
             }else{
               echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
+              header("location: login.php");
             }
           }
         }
         else {
-            echo "<script>alert('Informacion Incorrecta');</script>";
+          echo "<script>alert('Informacion Incorrecta');</script>";
+          header("location: login.php");
         }
+}
     /* if (!$result) {
         echo '<p class="error">Su contraseña o usuario es incorrecto</p>';
     } else {
@@ -85,7 +86,6 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
         }
     }
     */
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
