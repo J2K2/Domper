@@ -4,6 +4,13 @@
   session_start();
 
   if (isset($_SESSION['idtbl_user'])) {
+    $sql_buscar_us = "SELECT * FROM tbl_user WHERE idtbl_user=:id";
+    $consulta_buscar_us = $pdo->prepare($sql_buscar_us);
+    $consulta_buscar_us->bindparam(':id',$_SESSION['idtbl_user']);
+    $consulta_buscar_us->execute();
+    $resultado_buscar_us=$consulta_buscar_us->fetch(PDO::FETCH_ASSOC);
+    $user=$resultado_buscar_us;
+
     $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user=:id";
     $consulta_buscar = $pdo->prepare($sql_buscar);
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
