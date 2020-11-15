@@ -1,5 +1,5 @@
 <?php
-    include_once ("../../dao/conexion.php");
+    include_once ("../dao/conexion.php");
 
     $sql_buscar="SELECT * FROM tbl_product WHERE tbl_category_idtbl_category=:id";
     $consulta_buscar=$pdo->prepare($sql_buscar);
