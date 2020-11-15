@@ -10,47 +10,45 @@
     $consulta_buscar_us->execute();
     $resultado_buscar_us=$consulta_buscar_us->fetch(PDO::FETCH_ASSOC);
     $user=$resultado_buscar_us;
+    $id_user=$user['idtbl_user'];
     $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user=:id";
     $consulta_buscar = $pdo->prepare($sql_buscar);
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
     $cliente=$resultado_buscar;
+
+    if (isset($_POST['editar'])) {
+      $newtel = $_POST['newtel'];
+      $newnombres = $_POST['newnombres'];
+      $newapellidos = $_POST['newapellidos'];
+      $newcorreo = $_POST['newcorreo'];
+      $newsexo = $_POST['newsexo'];
+      if($newsexo == "1"){
+        $newsexo = "Masculino";
+      }else{
+        $newsexo = "Femenino";
+      }
+
+      $sql_actualizar = "UPDATE tbl_clientes SET
+      nombre=$newtel, 
+      apellido=$newapellidos, 
+      telefono=$newtel,
+      correo=$newcorreo, 
+      sexo=$newsexo,
+      WHERE tbl_user_idtbl_user=:id";
+
+      $consulta_actualizar = $pdo->prepare($sql_actualizar);
+      $consulta_actualizar->bindparam(':id',$_SESSION['idtbl_user']);
+      $consulta_actualizar->execute();
+      $resultado=$consulta_actualizar->fetchAll(PDO::FETCH_ASSOC);
+      var_dump($resultado);
+      //header ("Location: perfil_cliente.php");
+    }
   }
   else {
     header('location: ../../login/login.php');
-  }
-    if (isset($_POST['editar'])) {
-        $newtel = $_POST['newcelular'];
-        $newnombres = $_POST['newnombres'];
-        $newapellidos = $_POST['newapellidos'];
-        $newcorreo = $_POST['newcorreo'];
-        $newsexo = $_POST['newsexo'];
-        if($newsexo == "1"){
-        $newsexo = "Masculino";
-        }else{
-        $newsexo = "Femenino";
-        }
-        
-        $query = "UPDATE tbl_cliente SET
-        nombre='$newnombres', 
-        apellido='$newapellidos', 
-        telefono='$newtel',
-        correo='$newcorreo', 
-        sexo='$newsexo',
-        WHERE tbl_user_idtbl_user=:id;";
-
-        $queryy = $pdo->prepare($query);
-        $queryy->execute();
-        $resultado_buscar=$queryy->fetch(PDO::FETCH_ASSOC);
-
-        if($resultado_buscar){
-            echo ("GG bro");
-        }else{
-            //header ("Location: perfil_cliente.php");
-        }
-    }
-  
+  } 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -96,7 +94,7 @@
             </ol>
           </nav>
           /Breadcrumb -->
-           <form method="POST">
+          <form method="POST" action="" name="editar">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -107,7 +105,7 @@
                       <h4><?php echo $user['nameuser'];?></h4>
                       <h7>No puedes cambiarlo</h7><br><br>
                       <hr>
-                      <a href="perfil.php"><button class="btn btn-outline-primary">Volver</button></a>
+                      <a href="perfil_cliente.php"><button class="btn btn-outline-primary">Volver</button></a>
                     </div>
                   </div>
                 </div>
@@ -121,7 +119,7 @@
                       <h6 class="mb-0">Nombre</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newnombres" value="<?php echo $cliente['nombre'];?>">
+                    <input type="text" name="newnombres" value="<?php echo $cliente['nombre'];?>" required>
                     </div>
                   </div>
                   <hr>
@@ -130,7 +128,7 @@
                       <h6 class="mb-0">Apellidos</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newapellidos" value="<?php echo $cliente['apellido'];?>">
+                    <input type="text" name="newapellidos" value="<?php echo $cliente['apellido'];?>" required>
                     </div>
                   </div>
                   <hr>
@@ -139,7 +137,7 @@
                       <h6 class="mb-0">Celular</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="number" name="newtel" value="<?php echo $cliente['telefono'];?>">
+                    <input type="number" name="newtel" value="<?php echo $cliente['telefono'];?>" required>
                     </div>
                   </div>
                   <hr>
@@ -148,7 +146,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newcorreo" value="<?php echo $cliente['correo'];?>">
+                    <input type="text" name="newcorreo" value="<?php echo $cliente['correo'];?>" required>
                     </div>
                   </div>
                   <hr>
@@ -166,7 +164,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                    <button type="submit" class="btn btn-outline-primary" name='editar'>Editar</button>
+                     <button type="submit" name='editar' class="btn btn-outline-primary">Editar</button>
                     </div>
                   </div>
                 </div>
