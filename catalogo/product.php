@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>product full detail - Bootdey.com</title>
+    <title>Producto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="product_styles.css" rel="stylesheet">
@@ -45,25 +45,27 @@
 
             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                 <h2 class="name">
-                    Product Name Title Here
-                    <small>Product by <a href="javascript:void(0);">Adeline</a></small>
-                    <i class="fa fa-star fa-2x text-primary"></i>
+                    PRODUCTO
+                    <small>Vendido por <a href="javascript:void(0);">VENDEDOR USER</a></small>
+                    <!--<i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-muted"></i>
                     <span class="fa fa-2x"><h5>(109) Votes</h5></span>
                     <a href="javascript:void(0);">109 customer reviews</a>
+                    -->
                 </h2>
                 <hr />
                 <h3 class="price-container">
                     $129.54
-                    <small>*includes tax</small>
+                    <small>*Incluye impuestos</small>
                 </h3>
+                <!--
                 <div class="certified">
                     <ul>
                         <li>
-                            <a href="javascript:void(0);">Delivery time<span>7 Working Days</span></a>
+                            <a href="javascript:void(0);">Tiempo llegada estimado<span>7 dias</span></a>
                         </li>
                         <li>
                             <a href="javascript:void(0);">Certified<span>Quality Assured</span></a>
@@ -71,11 +73,12 @@
                     </ul>
                 </div>
                 <hr />
+                -->
                 <div class="description description-tabs">
                     <ul id="myTab" class="nav nav-pills">
                         <li class="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product Description </a></li>
                         <li class=""><a href="#specifications" data-toggle="tab">Specifications</a></li>
-                        <li class=""><a href="#reviews" data-toggle="tab">Reviews</a></li>
+                        <!-- <li class=""><a href="#reviews" data-toggle="tab">Reviews</a></li> -->
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="more-information">
@@ -103,6 +106,7 @@
                                 <dd>Vestibulum id ligula porta felis euismod semper</dd>
                             </dl>
                         </div>
+                        <!-- 
                         <div class="tab-pane fade" id="reviews">
                             <br />
                             <form method="post" class="well padding-bottom-10" onsubmit="return false;">
@@ -177,13 +181,14 @@
                 </div>
                 <hr />
                 <div class="row">
+                -->
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <a href="javascript:void(0);" class="btn btn-success btn-lg">Add to cart ($129.54)</a>
+                        <a href="javascript:void(0);" class="btn btn-success btn-lg">Contacto</a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right">
-                            <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Add to wishlist</button>
-                            <button class="btn btn-white btn-default"><i class="fa fa-envelope"></i> Contact Seller</button>
+                            <!--<button class="btn btn-white btn-default"><i class="fa fa-star"></i> Marcar</button>-->
+                            <button class="btn btn-white btn-default"><i class="fa fa-arrow-left"></i> Volver</button>
                         </div>
                     </div>
                 </div>
