@@ -30,38 +30,40 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
           $consulta_buscar_tra = $pdo->prepare($sql_buscar_tra);
           $consulta_buscar_tra->execute(array($id_user));
           $resultado_buscar_tra=$consulta_buscar_tra->fetch(PDO::FETCH_ASSOC);
+          
           //count para validar
           $cantidad_trabajadores = count($resultado_buscar_tra);
-
+          var_dump($resultado_buscar_tra);
           $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar = $pdo->prepare($sql_buscar);
           $consulta_buscar->execute(array($id_user));
           $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_clientes = count($resultado_buscar);
-
+          var_dump($resultado_buscar);
           $sql_buscar_emp = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar_emp = $pdo->prepare($sql_buscar_emp);
           $consulta_buscar_emp->execute(array($id_user));
           $resultado_buscar_emp=$consulta_buscar_emp->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_empresas = count($resultado_buscar_emp);
-          
-          if ($cantidad_clientes==1) {
-            echo "<script>alert('Logeado Correctamente');</script>";
+          var_dump($resultado_buscar_emp);
+          if ($cantidad_clientes == 11) {
+            echo "<script>alert('Logeado Correctamente cliente');</script>";
             header("Location: ../perfil/perfil_cliente.php");
             exit;
-          } elseif ($cantidad_empresas==1){
-            if ($resultado_buscar_emp['validacion']==1){
-              echo "<script>alert('Logeado Correctamente')</script>";
+          } 
+          elseif ($cantidad_empresas == 11){
+            if ($resultado_buscar_emp['validacion'] == 1){
+              echo "<script>alert('Logeado Correctamente empresa')</script>";
               header("Location: ../perfil/perfil_empresa.php");
               exit;
             }else{
               echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
             }
-          } elseif ($cantidad_trabajadores==1){
-            if ($resultado_buscar_tra['validacion']==1){
-              echo "<script>alert('Logeado Correctamente');</script>";
+          } elseif ($cantidad_trabajadores == 11){
+            if ($resultado_buscar_tra['validacion'] == 1){
+              echo "<script>alert('Logeado Correctamente worker');</script>";
               header("Location: ../perfil/perfil_trabajador.php");
               exit;
             }else{
