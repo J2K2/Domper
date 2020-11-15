@@ -10,83 +10,34 @@
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
     $user=$resultado_buscar;
-    $id_user = $user['idtbl_user'];
+    $id_user=$user['idtbl_user'];
   }
   else {
     header('location: ../../login/login.php');
   }
-  
-  
     if (isset($_POST['editar'])) {
-
-
-      require('../../dao/conexion.php');
-      // echo ("Gonorrea");
-      // $query = "UPDATE tbl_user SET nombre='gas' WHERE idtbl_user='$id_user'";
-      // $queryy = $pdo->prepare($query);
-      // $queryy->execute();
-      // $resultado_buscar=$queryy->fetch(PDO::FETCH_ASSOC);
-
-    //   // Capturando variables
-    //   /*
-    // $skill1 = $_POST['newskill1'];
-    // $skill2 = $_POST['newskill2'];
-    // $skill3 = $_POST['newskill3'];
-    // $skill4 = $_POST['newskill4'];
-    // $skill5 = $_POST['newskill5'];
-
-    // $skill_desc1 = $_POST['new_skill_desc1'];
-    // $skill_desc2 = $_POST['new_skill_desc2'];
-    // $skill_desc3 = $_POST['new_skill_desc3'];
-    // $skill_desc4 = $_POST['new_skill_desc4'];
-    // $skill_desc5 = $_POST['new_skill_desc5'];
-
-        
-
-    //   // Llenando habilidades
-    // $sql_ins_skills = "INSERT INTO tbl_habilidad (nombre,descripcion,tbl_user_idtbl_user)
-    //     values (?,?,?)";
-    //     $con_sql_ins_skills = $pdo->prepare($sql_ins_skills);
-    //     $con_sql_ins_skills -> execute(array($skill,$skill_desc,$id_user));
-    
-    // */
-
-  
-
-
-
-
-    // INFO BASIC
-    $newpassword = $_POST['newpassword'];
-    $newfijo = $_POST['newfijo'];
-    $newcelular = $_POST['newcelular'];
+    $newtel = $_POST['newcelular'];
     $newnombres = $_POST['newnombres'];
     $newapellidos = $_POST['newapellidos'];
     $newcorreo = $_POST['newcorreo'];
     $newsexo = $_POST['newsexo'];
-    $newcargo = $_POST['newcargo'];
-    
     if($newsexo == "1"){
       $newsexo = "Masculino";
     }else{
       $newsexo = "Femenino";
     }
     
-    $query = "UPDATE tbl_user SET
-    contrasena='$newpassword', 
-    telefono_fijo='$newfijo', 
-    telefono_celular='$newcelular', 
+    $query = "UPDATE tbl_cliente SET
     nombre='$newnombres', 
     apellido='$newapellidos', 
+    telefono='$newtel',
     correo='$newcorreo', 
     sexo='$newsexo',
-    cargo='$newcargo'
-    WHERE idtbl_user='$id_user';";
+    WHERE tbl_user_idtbl_user='$id_user';";
 
       $queryy = $pdo->prepare($query);
       $queryy->execute();
       $resultado_buscar=$queryy->fetch(PDO::FETCH_ASSOC);
-
 
       if($resultado_buscar){
         echo ("GG bro");
@@ -139,7 +90,7 @@
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
           </nav>
-           <!-- /Breadcrumb -->
+          /Breadcrumb -->
            <form method="POST">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -156,7 +107,7 @@
                             <h6>Cargo</h6>
                             </div>
                                 <div class="col-sm-8 text-secondary">
-                                    <input class="form-control" type="text" name="newcargo" value="<?php echo $user['cargo'];?>">
+                                    <input class="form-control" type="text" name="newcargo" value="<?php echo "nada";?>">
                                  </div>
                             </div>
                                 <hr>
@@ -166,7 +117,7 @@
                             <h6>Ubicacion</h6>
                             </div>
                                 <div class="col-sm-8 text-secondary">
-                                    <input class="form-control" type="text" name="newubi" placeholder="<?php echo $user['nombre'];?>">
+                                    <input class="form-control" type="text" name="newubi" placeholder="<?php echo "menos";?>">
                                  </div>
                             </div>
                                 <hr>
@@ -201,14 +152,6 @@
                 </ul>
               </div>
             </div>
-            
-
-
-
-
-
-            
-          
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -218,41 +161,40 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                     <input class="form-control" type="text" name="newnombres" value="<?php echo $user['nombre'];?>">
-                    
                     </div>
                   </div>
                   <hr>
-
-
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Apellidos</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                     <input class="form-control" type="text" name="newapellidos" value="<?php echo $user['apellido'];?>">
-                    
                     </div>
                   </div>
-                  <hr>
-
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Contraseña</h6>
+                      <h6 class="mb-0">Celular</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newpassword" value="<?php echo $user['contrasena'];?>">
-                    
+                    <input class="form-control" type="number" name="newtel" value="<?php echo $cliente['telefono'];?>">
                     </div>
                   </div>
                   <hr>
-
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <input class="form-control" type="text" name="newcorreo" value="<?php echo $cliente['correo'];?>">
+                    </div>
+                  </div>
+                  <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Sexo</h6>
-                    </div>
-                        
+                    </div>    
                     <div class="col-sm-9 text-secondary">
-                
                           <select name="newsexo">
                             <option value="1">Masculino</option>
                             <option value="2">Femenino</option>
@@ -260,45 +202,13 @@
                     </div>
                   </div>
                   <hr>
-
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="text" name="newcorreo" value="<?php echo $user['correo'];?>">
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Teléfono</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="number" name="newfijo" value="<?php echo $user['telefono_fijo'];?>">
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Celular</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="number" name="newcelular" value="<?php echo $user['telefono_celular'];?>">
-                    </div>
-                  </div>
-                  <hr>
-
-
-
-
-
                   <div class="row">
                     <div class="col-sm-3">
                     <button type="submit" class="btn btn-outline-primary" name='editar'>Editar</button>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <a href="arismendy a perfil.php"><button class="btn btn-outline-primary">Salir</button></a>                    </div>
+                    <a href="perfil.php"><button class="btn btn-outline-primary">Salir</button></a>                    
+                    </div>
                   </div>
                 </div>
               </div>
@@ -309,11 +219,7 @@
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Biografia</i>Informacion General</h6>
                       <p>
-
-
                         Hola wenas
-                    
-                    
                       </p>
                     </div>
                   </div>
@@ -322,50 +228,6 @@
                   <div class="card h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Habilidades</i>En porcentajes</h6>
-                      
-                      
-                    
-
-                    
-                    <input class="form-control" type="text" name="newskill1" placeholder="<?php echo $user['nombre'];?>">
-                      <div class="progress mb-3" style="height: 5px">
-                        <?php 
-                        echo "<div class='progress-bar bg-primary' role='progressbar' style='width: 30%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100'></div>"
-                        ?>
-                      </div>
-
-                      <input class="form-control" type="text" name="newskill2" placeholder="<?php echo $user['nombre'];?>">
-                      <div class="progress mb-3" style="height: 5px">
-                        <?php 
-                            echo "<div class='progress-bar bg-primary' role='progressbar' style='width: 30%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100'></div>"
-                        ?>
-                      </div>
-
-
-
-                      <input class="form-control" type="text" name="newskill3" placeholder="<?php echo $user['nombre'];?>">
-                      <div class="progress mb-3" style="height: 5px">
-                        <?php 
-                            echo "<div class='progress-bar bg-primary' role='progressbar' style='width: 30%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100'></div>"
-                        ?>
-                      </div>
-
-
-
-                      <input class="form-control" type="text" name="newskill4" placeholder="<?php echo $user['apellido'];?>">
-                      <div class="progress mb-3" style="height: 5px">
-                        <?php 
-                            echo "<div class='progress-bar bg-primary' role='progressbar' style='width: 30%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100'></div>"
-                        ?>
-                        </div>
-
-
-                    <input class="form-control" type="text" name="newskill5" placeholder="<?php echo $user['apellido'];?>">
-                      <div class="progress mb-3" style="height: 5px">
-                        <?php 
-                            echo "<div class='progress-bar bg-primary' role='progressbar' style='width: "."30%"."' aria-valuenow='"."80'"." aria-valuemin='0' aria-valuemax='100'></div>"
-                        ?>
-                      </div>
                     </div>
                   </div>
                 </div>
