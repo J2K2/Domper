@@ -26,26 +26,23 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
           $_SESSION['autorizado']=true;
           $_SESSION['idtbl_user']= $id_user;
 
-          $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user=:id";
+          $sql_buscar = "SELECT * FROM tbl_clientes WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar = $pdo->prepare($sql_buscar);
-          $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
-          $consulta_buscar->execute();
+          $consulta_buscar->execute(array($id_user));
           $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_clientes = count($resultado_buscar);
 
-          $sql_buscar_tra = "SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user=:id";
+          $sql_buscar_tra = "SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar_tra = $pdo->prepare($sql_buscar_tra);
-          $consulta_buscar_tra->bindparam(':id',$_SESSION['idtbl_user']);
-          $consulta_buscar_tra->execute();
+          $consulta_buscar_tra->execute(array($id_user));
           $resultado_buscar_tra=$consulta_buscar_tra->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_trabajadores = count($resultado_buscar_tra);
 
-          $sql_buscar_emp = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user=:id";
+          $sql_buscar_emp = "SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user='$id_user'";
           $consulta_buscar_emp = $pdo->prepare($sql_buscar_emp);
-          $consulta_buscar_emp->bindparam(':id',$_SESSION['idtbl_user']);
-          $consulta_buscar_emp->execute();
+          $consulta_buscar_emp->execute(array($id_user));
           $resultado_buscar_emp=$consulta_buscar_emp->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_empresas = count($resultado_buscar_emp);
