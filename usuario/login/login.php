@@ -48,12 +48,12 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
           //count para validar
           $cantidad_empresas = count($resultado_buscar_emp);
           var_dump($resultado_buscar_emp);
-          if ($cantidad_clientes == 11) {
+          if ($cantidad_clientes == 7) {
             echo "<script>alert('Logeado Correctamente cliente');</script>";
             header("Location: ../perfil/perfil_cliente.php");
             exit;
           } 
-          elseif ($cantidad_empresas == 11){
+          elseif ($cantidad_empresas == 10){
             if ($resultado_buscar_emp['validacion'] == 1){
               echo "<script>alert('Logeado Correctamente empresa')</script>";
               header("Location: ../perfil/perfil_empresa.php");
