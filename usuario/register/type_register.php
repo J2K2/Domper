@@ -36,7 +36,7 @@
         </div>
             <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
                 <div class="block-7">
-                    <div class="img" style="background-image: url(https://via.placeholder.com/350x280/87CEFA/000000);"></div>
+                    <div class="img" style="background-image: url(https://via.placeholder.com/350x280/FFB6C1/000000);"></div>
                     <div class="text-center p-4">
                         <span class="excerpt d-block">Registrarse como Trabajador</span>
                         <span class="price">Al registarte como trabajador podrás:</span>
