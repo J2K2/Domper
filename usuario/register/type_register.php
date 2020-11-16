@@ -22,31 +22,29 @@
                 <div class="block-7">
                     <div class="img" style="background-image: url(https://via.placeholder.com/350x280/FFB6C1/000000);"></div>
                     <div class="text-center p-4">
-                        <span class="excerpt d-block">Personal</span>
-                        <span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mos</sub></span>
+                        <span class="excerpt d-block">Registrarse como Cliente</span>
+                        <span class="excerpt d-block">Al registarte como cliente podrás:</span>
                         <ul class="pricing-text mb-5">
-                            <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-                            <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-                            <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-                            <li><span class="fa fa-check mr-2"></span>Free Supports</li>
+                            <li><span class="fa fa-check mr-2"></span>Buscar servicios</li>
+                            <li><span class="fa fa-check mr-2"></span>Buscar productos</li>
+                            <li><span class="fa fa-check mr-2"></span>Comparar entre diferentes opciones</li>
+                            <li><span class="fa fa-check mr-2"></span>¡Y más!</li>
                         </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-                    </div>
-                </div>
-            </div>
+                        <a href="reg_cliente.php" class="btn btn-primary d-block px-2 py-3">Registarse ahora</a>
+                 </div>
+             </div>
+        </div>
             <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
                 <div class="block-7">
                     <div class="img" style="background-image: url(https://via.placeholder.com/350x280/87CEFA/000000);"></div>
                     <div class="text-center p-4">
-                        <span class="excerpt d-block">Business</span>
-                        <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mos</sub></span>
+                        <span class="excerpt d-block">Registrarse como Trabajador</span>
+                        <span class="price">Al registarte como trabajador podrás:</span>
                         <ul class="pricing-text mb-5">
-                            <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-                            <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-                            <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-                            <li><span class="fa fa-check mr-2"></span>Free Supports</li>
+                            <li><span class="fa fa-check mr-2"></span>Ofrecer tus servicios y/o productos</li>
+                            <li><span class="fa fa-check mr-2"></span>Al igual de obtener los mismos beneficios que tienen los clientes </li>
                         </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                        <a href="reg_trabajador.php" class="btn btn-primary d-block px-2 py-3">Resgistrarse ahora</a>
                     </div>
                 </div>
             </div>
@@ -54,15 +52,14 @@
                 <div class="block-7">
                     <div class="img" style="background-image: url(https://via.placeholder.com/350x280/FF7F50/000000);"></div>
                     <div class="text-center p-4">
-                        <span class="excerpt d-block">Ultimate</span>
-                        <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mos</sub></span>
+                        <span class="excerpt d-block">Registrase como Empresa</span>
+                        <span class="price">Al registrate como empresa<</span>
                         <ul class="pricing-text mb-5">
-                            <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-                            <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-                            <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-                            <li><span class="fa fa-check mr-2"></span>Free Supports</li>
+                            <li><span class="fa fa-check mr-2"></span>Promocionar tu empresa</li>
+                            <li><span class="fa fa-check mr-2"></span>Ofrecer tus servicios y/o productos</li>
+                            <li><span class="fa fa-check mr-2"></span>Al igual de obtener los mismos beneficios que tienen los clientes</li>
                         </ul>
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                        <a href="reg_empresa.php" class="btn btn-primary d-block px-2 py-3">Registrarse ahora</a>
                     </div>
                 </div>
             </div>
