@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
             <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <h2>Affordable Packages</h2>
+                <h2>Resgistro</h2>
             </div>
         </div>
         <div class="row">
