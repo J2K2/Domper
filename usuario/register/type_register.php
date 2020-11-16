@@ -10,11 +10,18 @@
     <link href="register_table.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="btn btn-primary d-block px-2 py-3" href="../../index.html">Domper</a>
+                    </ul>
+                </div>
+            </div>
+   </nav><br><br><br><br><br>
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
             <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <h2>Affordable Packages</h2>
+                <h2>Resgistro</h2>
             </div>
         </div>
         <div class="row">
