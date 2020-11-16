@@ -179,63 +179,9 @@
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <style>
-                            /* Style The Dropdown Button */
-                            .dropbtn {
-                             /* background-color: #d4e0d4f5;*/
-                              color: gray;
-                             /* padding: 14px;
-                              font-size: 14px;
-                              border: none;
-                              cursor: pointer;*/
-                            }
-                            
-                            /* The container <div> - needed to position the dropdown content */
-                            .dropdown {
-                              position: relative;
-                              display: inline-block;
-                            }
-                            
-                            /* Dropdown Content (Hidden by Default) */
-                            .dropdown-content {
-                              display: none;
-                              position: absolute;
-                              background-color: #f9f9f9;
-                              min-width: 160px;
-                              box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.2);
-                              z-index: 1;
-                            }
-                            
-                            /* Links inside the dropdown */
-                            .dropdown-content a {
-                              color: black;
-                              padding: 8px 14px;
-                              text-decoration: none;
-                              display: block;
-                            }
-                            
-                            /* Change color of dropdown links on hover */
-                            .dropdown-content a:hover {background-color: #f1f1f1}
-                            
-                            /* Show the dropdown menu on hover */
-                            .dropdown:hover .dropdown-content {
-                              display: block;
-                            }
-                            
-                            /* Change the background color of the dropdown button when the dropdown content is shown */
-                            .dropdown:hover .dropbtn {
-                              background-color: #c6cfdd;
-                            }
-                            </style>
-                            
-                        <div class="dropdown">
-                            <button class="dropbtn">Edita tu catálogo</button>
-                            <div class="dropdown-content">
-                              <a href="usuario/register/reg_cliente.php">Como Cliente</a>
-                              <a href="usuario/register/reg_trabajador.php">Como trabajador</a>
-                              <a href="usuario/register/reg_empresa.php">Como empresa</a>
-                            </div>
-                          </div>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Edita tus catálogos</i></h6>
+                      <a href="../../interaccion/cat_product.php?<?php echo $empresa['idtbl_empresa']?>"><button class="btn btn-outline-primary">Productos</button></a>
+                      <a href="../../interaccion/cat_service.php?<?php echo $empresa['idtbl_empresa']?>"><button class="btn btn-outline-primary">Servicios</button></a>
                     </div>
                   </div>
                 </div>
