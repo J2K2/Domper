@@ -1,126 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>bs4 sevices page - Bootdey.com</title>
+    <title>Tags</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-    	body{
-    margin-top:20px;
-    background:#eee;
-}
-.card::after {
-    display: block;
-    position: absolute;
-    bottom: -10px;
-    left: 20px;
-    width: calc(100% - 40px);
-    height: 35px;
-    background-color: #fff;
-    -webkit-box-shadow: 0 19px 28px 5px rgba(64,64,64,0.09);
-    box-shadow: 0 19px 28px 5px rgba(64,64,64,0.09);
-    content: '';
-    z-index: -1;
-}
-a.card {
-    text-decoration: none;
-}
-
-.card {
-    position: relative;
-    border: 0;
-    border-radius: 0;
-    background-color: #fff;
-    -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09);
-    box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09);
-}
-.card {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,0.125);
-    border-radius: .25rem;
-}
-
-.box-shadow {
-    -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09) !important;
-    box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09) !important;
-}
-
-.ml-auto, .mx-auto {
-    margin-left: auto !important;
-}
-.mr-auto, .mx-auto {
-    margin-right: auto !important;
-}
-.rounded-circle {
-    border-radius: 50% !important;
-}
-.bg-white {
-    background-color: #fff !important;
-}
-
-.ml-auto, .mx-auto {
-    margin-left: auto !important;
-}
-
-.mr-auto, .mx-auto {
-    margin-right: auto !important;
-}
-.d-block {
-    display: block !important;
-}
-img, figure {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-}
-
-.card-text {
-    padding-top: 12px;
-    color: #8c8c8c;
-}
-
-.text-sm {
-    font-size: 12px !important;
-}
-p, .p {
-    margin: 0 0 16px;
-}
-
-.card-title {
-    margin: 0;
-    font-family: "Montserrat",sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.pt-1, .py-1 {
-    padding-top: .25rem !important;
-}
-
-.head-icon{
-    margin-top:18px;
-    color:#FF4500
-}
-    </style>
+    <link href="tags_styles.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Domper</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Servicios</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portafolio</a></li> -->
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuario/login/login.php">Iniciar Sesion</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuario/register/signup.php">Registrarse</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuario/register/signup.php">CREAR</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <section class="container pt-3 mb-3">
-    <h2 class="h3 block-title text-center">What we do<small>Whatever we do, we do with your end user in mind </small></h2>
+    <h2 class="h3 block-title text-center">What we do <small>Whatever we do, we do with your end user in mind </small></h2>
     <div class="row pt-5 mt-30">
         <div class="col-lg-4 col-sm-6 mb-30 pb-5">
             <a class="card" href="#">
@@ -176,12 +86,34 @@ p, .p {
                 </div>
             </a>
         </div>
+        <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+            <a class="card" href="#">
+                <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fa-image fa-3x head-icon"></i></div>
+                <div class="card-body text-center">
+                    <h3 class="card-title pt-1">SEO Optimization</h3>
+                    <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+            <a class="card" href="#">
+                <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fa-image fa-3x head-icon"></i></div>
+                <div class="card-body text-center">
+                    <h3 class="card-title pt-1">SEO Optimization</h3>
+                    <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
     </div>
 </section>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	
+
 </script>
+<script src="../js/scripts.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>   
 </body>
 </html>
