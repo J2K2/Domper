@@ -31,19 +31,19 @@
       }
 
       $sql_actualizar = "UPDATE tbl_clientes SET
-      nombre=$newtel, 
-      apellido=$newapellidos, 
-      telefono=$newtel,
-      correo=$newcorreo, 
-      sexo=$newsexo,
-      WHERE tbl_user_idtbl_user=:id";
+      nombre='$newnombres', 
+      apellido='$newapellidos', 
+      telefono='$newtel',
+      correo='$newcorreo', 
+      sexo='$newsexo'
+      WHERE idtbl_clientes=:id";
 
       $consulta_actualizar = $pdo->prepare($sql_actualizar);
-      $consulta_actualizar->bindparam(':id',$_SESSION['idtbl_user']);
+      $consulta_actualizar->bindparam(':id',$cliente['idtbl_clientes']);
       $consulta_actualizar->execute();
       $resultado=$consulta_actualizar->fetchAll(PDO::FETCH_ASSOC);
-      var_dump($resultado);
-      //header ("Location: perfil_cliente.php");
+      
+      header ("Location: perfil_cliente.php");
     }
   }
   else {
@@ -94,7 +94,7 @@
             </ol>
           </nav>
           /Breadcrumb -->
-          <form method="POST" action="" name="editar">
+          <form method="POST" action="editar_cliente.php" name="editar">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
