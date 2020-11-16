@@ -108,75 +108,10 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#about">Sobre Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#services">Servicios</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->   
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Iniciar Sesion</a></li>
-                        <style>
-                            /* Style The Dropdown Button */
-                            .dropbtn {
-                              background-color: #d4e0d4;
-                              color: gray;
-                              padding: 14px;
-                              font-size: 14px;
-                              border: none;
-                              cursor: pointer;
-                            }
-                            
-                            /* The container <div> - needed to position the dropdown content */
-                            .dropdown {
-                              position: relative;
-                              display: inline-block;
-                            }
-                            
-                            /* Dropdown Content (Hidden by Default) */
-                            .dropdown-content {
-                              display: none;
-                              position: absolute;
-                              background-color: #f9f9f9;
-                              min-width: 160px;
-                              box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.2);
-                              z-index: 1;
-                            }
-                            
-                            /* Links inside the dropdown */
-                            .dropdown-content a {
-                              color: black;
-                              padding: 8px 14px;
-                              text-decoration: none;
-                              display: block;
-                            }
-                            
-                            /* Change color of dropdown links on hover */
-                            .dropdown-content a:hover {background-color: #f1f1f1}
-                            
-                            /* Show the dropdown menu on hover */
-                            .dropdown:hover .dropdown-content {
-                              display: block;
-                            }
-                            
-                            /* Change the background color of the dropdown button when the dropdown content is shown */
-                            .dropdown:hover .dropbtn {
-                              background-color: #7aa7eb;
-                            }
-                            </style>
-                        <div class="dropdown">
-                            <button class="dropbtn">Registrase</button>
-                            <div class="dropdown-content">
-                              <a href="usuario/register/reg_cliente.php">Como Cliente</a>
-                              <a href="usuario/register/reg_trabajador.php">Como trabajador</a>
-                              <a href="usuario/register/reg_empresa.php">Como empresa</a>
-                            </div>
-                          </div> 
                     </ul>
                 </div>
             </div>
         </nav><br><br><br><br><br>
-           
 <form method="post" action="login.php" name="signin-form">
 <div class="container">
     <div class="row justify-content-center">

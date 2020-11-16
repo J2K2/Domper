@@ -236,13 +236,6 @@
                               <a href="usuario/register/reg_empresa.php">Como empresa</a>
                             </div>
                           </div>
-                          <div class="dropdown">
-                            <button class="dropbtn">¿Buscas Algo?</button>
-                            <div class="dropdown-content">
-                              <a href="Catalogo/cat_product.php">Productos</a>
-                              <a href="Catalogo/cat_service.php">Servicios</a>
-                            </div>
-                          </div>
                     </div>
                   </div>
                 </div>
