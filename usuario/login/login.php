@@ -111,7 +111,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
                     </ul>
                 </div>
             </div>
-        </nav><br><br><br><br><br>
+   </nav><br><br><br><br><br>
 <form method="post" action="login.php" name="signin-form">
 <div class="container">
     <div class="row justify-content-center">

@@ -29,15 +29,14 @@
                 <div class="block-7">
                     <div class="img" style="background-image: url(https://via.placeholder.com/350x280/FFB6C1/000000);"></div>
                     <div class="text-center p-4">
-                        <span class="excerpt d-block">Registrarse como Cliente</span>
-                        <span class="excerpt d-block">Al registarte como cliente podrás:</span>
+                        <span class="excerpt d-block">Al registarte como cliente podrás:</span><br>
                         <ul class="pricing-text mb-5">
                             <li><span class="fa fa-check mr-2"></span>Buscar servicios</li>
                             <li><span class="fa fa-check mr-2"></span>Buscar productos</li>
                             <li><span class="fa fa-check mr-2"></span>Comparar entre diferentes opciones</li>
                             <li><span class="fa fa-check mr-2"></span>¡Y más!</li>
                         </ul>
-                        <a href="reg_cliente.php" class="btn btn-primary d-block px-2 py-3">Registarse ahora</a>
+                        <a href="reg_cliente.php" class="btn btn-primary d-block px-2 py-3">Registarse como cliente ahora</a>
                  </div>
              </div>
         </div>
@@ -45,13 +44,12 @@
                 <div class="block-7">
                     <div class="img" style="background-image: url(https://via.placeholder.com/350x280/FFB6C1/000000);"></div>
                     <div class="text-center p-4">
-                        <span class="excerpt d-block">Registrarse como Trabajador</span>
-                        <span class="price">Al registarte como trabajador podrás:</span>
+                        <span class="excerpt d-block">Al registarte como trabajador podrás:</span><br>
                         <ul class="pricing-text mb-5">
                             <li><span class="fa fa-check mr-2"></span>Ofrecer tus servicios y/o productos</li>
                             <li><span class="fa fa-check mr-2"></span>Al igual de obtener los mismos beneficios que tienen los clientes </li>
                         </ul>
-                        <a href="reg_trabajador.php" class="btn btn-primary d-block px-2 py-3">Resgistrarse ahora</a>
+                        <a href="reg_trabajador.php" class="btn btn-primary d-block px-2 py-3">Resgistrarse como trabajador ahora</a>
                     </div>
                 </div>
             </div>
@@ -59,14 +57,13 @@
                 <div class="block-7">
                     <div class="img" style="background-image: url(https://via.placeholder.com/350x280/FF7F50/000000);"></div>
                     <div class="text-center p-4">
-                        <span class="excerpt d-block">Registrase como Empresa</span>
-                        <span class="price">Al registrate como empresa<</span>
+                        <span class="excerpt d-block">Al registrate como empresa podrás:</span><br>
                         <ul class="pricing-text mb-5">
                             <li><span class="fa fa-check mr-2"></span>Promocionar tu empresa</li>
                             <li><span class="fa fa-check mr-2"></span>Ofrecer tus servicios y/o productos</li>
                             <li><span class="fa fa-check mr-2"></span>Al igual de obtener los mismos beneficios que tienen los clientes</li>
                         </ul>
-                        <a href="reg_empresa.php" class="btn btn-primary d-block px-2 py-3">Registrarse ahora</a>
+                        <a href="reg_empresa.php" class="btn btn-primary d-block px-2 py-3">Registrarse como empresa ahora</a>
                     </div>
                 </div>
             </div>
