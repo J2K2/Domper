@@ -77,7 +77,7 @@
                       <p class="text-secondary mb-1">Ciudades donde labora</p>
                       <p class="text-muted font-size-sm">*ciudades*</p>
                       <a href="../login/logout.php"><button class="btn btn-outline-primary">Cerrar Sesion</button></a>
-                      <a href="edit_empresa.php"><button class="btn btn-outline-primary">Editar</button></a>
+                      <a href="editar_empresa.php"><button class="btn btn-outline-primary">Editar</button></a>
                     </div>
                   </div>
                 </div>
