@@ -76,7 +76,7 @@
                     <div class="mt-3">
                       <h4><?php echo $user['nameuser'];?></h4>
                       <a href="../login/logout.php"><button class="btn btn-outline-primary">Cerrar Sesion</button></a>
-                      <a href="editar_cliente.php"><button class="btn btn-outline-primary">Editar</button></a>
+                      <a href="editar/editar_cliente.php"><button class="btn btn-outline-primary">Editar</button></a>
                     </div>
                   </div>
                 </div>

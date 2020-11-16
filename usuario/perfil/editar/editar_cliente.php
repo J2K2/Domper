@@ -105,7 +105,7 @@
                       <h4><?php echo $user['nameuser'];?></h4>
                       <h7>No puedes cambiarlo</h7><br><br>
                       <hr>
-                      <a href="perfil_cliente.php"><button class="btn btn-outline-primary">Volver</button></a>
+                      <a href="../perfil_cliente.php"><button class="btn btn-outline-primary">Volver</button></a>
                     </div>
                   </div>
                 </div>

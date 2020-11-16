@@ -118,7 +118,7 @@
                                  </div>
                             </div>
                                 <hr>
-                      <a href="perfil_trabajador.php"><button class="btn btn-outline-primary">Volver</button></a>
+                      <a href="../perfil_trabajador.php"><button class="btn btn-outline-primary">Volver</button></a>
                     </div>
                   </div>
                 </div>
