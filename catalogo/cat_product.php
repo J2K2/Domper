@@ -1,12 +1,11 @@
 <?php
     include_once ("../dao/conexion.php");
 
-    $sql_buscar="SELECT * FROM tbl_product WHERE tbl_category_idtbl_category=:id";
-    $consulta_buscar=$pdo->prepare($sql_buscar);
-    $consulta_buscar->bindparam(':id',$category);
-    $consulta_buscar->execute();
-    $resultados=$consulta_buscar->fetchALL(PDO::FETCH_ASSOC);
-    $nresultados=count($resultados['idtbl_product']);
+    $sql_todos="SELECT idtbl_product FROM tbl_product";
+    $consulta_todos=$pdo->prepare($sql_todos);
+    $consulta_todos->execute();
+    $resultados_todos=$consulta_todos->fetchALL(PDO::FETCH_ASSOC);
+    $todos=count($resultados_todos);
 
 ?>
 <!DOCTYPE html>
@@ -195,292 +194,49 @@
             </div>
         </section>
         <div class="row product-list">
-            <!--<?php// for ($i=1; $i <= $nresultados ; $i++) {?>
+
+           <?php 
+                if ($todos>=1) {
+                    for ($i=1;$i<=$todos;$i++){
+                        $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
+                        $consulta_product=$pdo->prepare($sql_product);
+                        $consulta_product->bindparam(':id',$i);
+                        $consulta_product->execute();
+                        $resultados_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
+                        $product=$resultados_product;
+            ?>
             <div class="col-md-4">
                 <section class="panel">
                     <div class="pro-img-box">
                         <img src=<?php //echo $resultados['foto'][$nresultados];?> alt="" />
-                        <a href="#" class="adtocart">
+                        <a href="product.php:? <?php echo $product['idtbl_product'];?>" class="adtocart">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </div>
                     <div class="panel-body text-center">
                         <h4>
-                            <a href="#" class="pro-title">
-                                <?php //echo $resultados['nombre'][$nresultados];?>
+                            <a href="product.php:? <?php echo $product['idtbl_product'];?>" class="pro-title">
+                            <?php echo $product['nombre_prod'];?>
                             </a>
                         </h4>
-                        <p class="price"> <?php //echo $resultados['precio'][$nresultados];?></p>
-                    </div>
-                </section>
-            </div>-->
-            <?php// } ?>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/6495ED/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
+                        <p class="price"> <?php echo $product['precio'];?></p>
                     </div>
                 </section>
             </div>
+            <?php
+                    } 
+                }else {
+            ?>  
             <div class="col-md-4">
                 <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/FF7F50/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
                     <div class="panel-body text-center">
                         <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
+                            <?php echo "No hay resultados";?>
                         </h4>
-                        <p class="price">$300.00</p>
                     </div>
                 </section>
             </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/00BFFF/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/00CED1/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/9400D3/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/FFD700/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/ADD8E6/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/20B2AA/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/3CB371/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/FFB6C1/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/C71585/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/191970/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/87CEEB/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img src="https://via.placeholder.com/250x220/FFB6C1/000000" alt="" />
-                        <a href="#" class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a href="#" class="pro-title">
-                                Leopard Shirt Dress
-                            </a>
-                        </h4>
-                        <p class="price">$300.00</p>
-                    </div>
-                </section>
-            </div>
+            <?php }?>
         </div>
     </div>
 </div>
