@@ -25,14 +25,13 @@
       $newtelcel = $_POST['newtelcel'];
       $newcorreo = $_POST['newcorreo'];
       $newdes = $_POST['newdes'];
-      
       $sql_actualizar = "UPDATE tbl_empresa SET
       nombre='$newnombre', 
       direccion='$newtdir', 
       tel_fijo='$newtelfi',
       tel_celular='$newtelcel',
       correo='$newcorreo', 
-      descripcion='$newsdes'
+      descripcion='$newdes'
       WHERE idtbl_empresa=:id";
 
       $consulta_actualizar = $pdo->prepare($sql_actualizar);
@@ -111,7 +110,6 @@
                                 </div>
                         </div>
                             <hr>
-                      <button class="btn btn-outline-primary">Enviar</button>
                       <a href="perfil_empresa.php"><button class="btn btn-outline-primary">Volver</button></a>
                     </div>
                   </div>

@@ -10,13 +10,12 @@
     $consulta_buscar_us->execute();
     $resultado_buscar_us=$consulta_buscar_us->fetch(PDO::FETCH_ASSOC);
     $user=$resultado_buscar_us;
-    $id_user=$user['idtbl_user'];
     $sql_buscar = "SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user=:id";
     $consulta_buscar = $pdo->prepare($sql_buscar);
     $consulta_buscar->bindparam(':id',$_SESSION['idtbl_user']);
     $consulta_buscar->execute();
     $resultado_buscar=$consulta_buscar->fetch(PDO::FETCH_ASSOC);
-    $cliente=$resultado_buscar;
+    $trabajador=$resultado_buscar;
 
     if (isset($_POST['editar'])) {
       $newnombres = $_POST['newnombres'];
@@ -25,7 +24,7 @@
       $newsexo = $_POST['newsexo'];
       $newtel_fijo = $_POST['newtel_fijo'];
       $newtel_celular = $_POST['newtel_celular'];
-      $newdoc_iden = $_POST['newdoc_iden'];
+      $newlifepage=$_POST['newlifepage'];
       if($newsexo == "1"){
         $newsexo = "Masculino";
       }else{
@@ -38,8 +37,8 @@
       correo='$newcorreo', 
       sexo='$newsexo',
       tel_fijo='$newtel_fijo',
-      tel_celular='$newtel_celular', 
-      doc_iden='$newdoc_iden'
+      tel_celular='$newtel_celular',
+      lifepage='$newlifepage'
       WHERE idtbl_trabajador=:id";
 
       $consulta_actualizar = $pdo->prepare($sql_actualizar);
@@ -119,7 +118,6 @@
                                  </div>
                             </div>
                                 <hr>
-                      <button class="btn btn-outline-primary">Enviar</button>
                       <a href="perfil_trabajador.php"><button class="btn btn-outline-primary">Volver</button></a>
                     </div>
                   </div>
@@ -173,15 +171,6 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Documento de Identidad</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <input class="form-control" type="number" name="newdoc_iden" value="<?php echo $trabajador['doc_iden'];?>">
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
                       <h6 class="mb-0">Teléfono Fijo</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
@@ -221,23 +210,21 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
+                      <h6 class="mb-0">Hoja de vida</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <input class="form-control" type="text" name="newlifepage" value="<?php echo $trabajador['lifepage'];?>">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
                     <button type="submit" class="btn btn-outline-primary" name='editar'>Editar</button>
                     </div>
                   </div>
                 </div>
               </div>
               </form>
-              <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Biografia</i>Informacion General</h6>
-                      <p>
-                        Hola wenas
-                      </p>
-                    </div>
-                  </div>
-                </div>
             </div>
           </div>
         </div>
