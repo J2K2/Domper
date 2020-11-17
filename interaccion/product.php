@@ -7,34 +7,37 @@
     $resultado_service=$consulta_service->fetch(PDO::FETCH_ASSOC);
     $service=$resultado_service;
     
-    $sql_rel="SELECT * FROM tbl_emp_serv WHERE tbl_service_idtbl_service=:id";
-    $consulta_rel=$pdo->prepare($sql_rel);
-    $consulta_rel->bindparam(':id',$_GET['id']);
-    $consulta_rel->execute();
-    $resultado_rel=$consulta_rel->fetch(PDO::FETCH_ASSOC);
-    $relacion=$resultado_rel;
+    $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
+    $consulta_emp=$pdo->prepare($sql_emp);
+    $consulta_emp->bindparam(':id',$service['tbl_empresa_idtbl_empresa']);
+    $consulta_emp->execute();
+    $resultado_emp=$consulta_emp->fetch(PDO::FETCH_ASSOC);
+    $user_emp=$resultado_emp;
+    $resultado_emp=count($user_emp);
     
-    if ($relacion['tbl_empresa_idtbl_empresa']>0) {
-        $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
-        $consulta_emp=$pdo->prepare($sql_emp);
-        $consulta_emp->bindparam(':id',$service['tbl_empresa_idtbl_empresa']);
-        $consulta_emp->execute();
-        $resultado_emp=$consulta_emp->fetch(PDO::FETCH_ASSOC);
-        $user=$resultado_emp;
-    }elseif ($relacion['tbl_trabajador_idtbl_trabajador']>0) {
-        $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
-        $consulta_tra=$pdo->prepare($sql_tra);
-        $consulta_tra->bindparam(':id',$service['tbl_trabajador_idtbl_trabajador']);
-        $consulta_tra->execute();
-        $resultado_tra=$consulta_tra->fetch(PDO::FETCH_ASSOC);
-        $user=$resultado_tra;
+    $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
+    $consulta_tra=$pdo->prepare($sql_tra);
+    $consulta_tra->bindparam(':id',$service['tbl_trabajador_idtbl_trabajador']);
+    $consulta_tra->execute();
+    $resultado_tra=$consulta_tra->fetch(PDO::FETCH_ASSOC);
+    $user_tra=$resultado_tra;
+    $resultado_tra=count($user_tra);
+
+    if ($resultado_emp>0) {
+        $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
+        $consulta_user=$pdo->prepare($sql_user);
+        $consulta_user->bindparam(':id',$user_emp['tbl_user_idtbl_user']);
+        $consulta_user->execute();
+        $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
+        $user=$resultado_user;
+    }elseif ($resultado_tra>0) {
+        $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
+        $consulta_user=$pdo->prepare($sql_user);
+        $consulta_user->bindparam(':id',$user_tra['tbl_user_idtbl_user']);
+        $consulta_user->execute();
+        $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
+        $user=$resultado_user;
     }
-    $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
-    $consulta_user=$pdo->prepare($sql_user);
-    $consulta_user->bindparam(':id',$user['tbl_user_idtbl_user']);
-    $consulta_user->execute();
-    $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
-    $user=$resultado_user;
 ?>
 <!DOCTYPE html>
 <html lang="es">
