@@ -45,12 +45,12 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
           $resultado_buscar_emp=$consulta_buscar_emp->fetch(PDO::FETCH_ASSOC);
           //count para validar
           $cantidad_empresas = count($resultado_buscar_emp);
-          if ($cantidad_clientes == 8) {
+          if ($cantidad_clientes == 7) {
             echo "<script>alert('Logeado Correctamente cliente');</script>";
             header("Location: ../perfil/perfil_cliente.php");
             exit;
           } 
-          elseif ($cantidad_empresas == 11){
+          elseif ($cantidad_empresas == 10){
             if ($resultado_buscar_emp['validacion'] == 1){
               echo "<script>alert('Logeado Correctamente empresa')</script>";
               header("Location: ../perfil/perfil_empresa.php");
@@ -59,7 +59,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
               echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
               header("location: login.php");
             }
-          } elseif ($cantidad_trabajadores == 12){
+          } elseif ($cantidad_trabajadores == 11){
             if ($resultado_buscar_tra['validacion'] == 1){
               echo "<script>alert('Logeado Correctamente worker');</script>";
               header("Location: ../perfil/perfil_trabajador.php");

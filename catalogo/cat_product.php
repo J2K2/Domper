@@ -209,13 +209,13 @@
                 <section class="panel">
                     <div class="pro-img-box">
                         <img src=<?php //echo $resultados['foto'][$nresultados];?> alt="" />
-                        <a href="product.php:? <?php echo $product['idtbl_product'];?>" class="adtocart">
+                        <a href="product.php?id=<?php echo $product['idtbl_product'];?>" class="adtocart">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </div>
                     <div class="panel-body text-center">
                         <h4>
-                            <a href="product.php:? <?php echo $product['idtbl_product'];?>" class="pro-title">
+                            <a href="product.php?id=<?php echo $product['idtbl_product'];?>" class="pro-title">
                             <?php echo $product['nombre_prod'];?>
                             </a>
                         </h4>

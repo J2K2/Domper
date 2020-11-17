@@ -1,3 +1,41 @@
+<?php
+    include_once ('../dao/conexion.php');
+    $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
+    $consulta_product=$pdo->prepare($sql_product);
+    $consulta_product->bindparam(':id',$_GET['id']);
+    $consulta_product->execute();
+    $resultado_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
+    $product=$resultado_product;
+
+    $sql_rel="SELECT * FROM tbl_emp_prod WHERE tbl_product_idtbl_product=:id";
+    $consulta_rel=$pdo->prepare($sql_rel);
+    $consulta_rel->bindparam(':id',$_GET['id']);
+    $consulta_rel->execute();
+    $resultado_rel=$consulta_rel->fetch(PDO::FETCH_ASSOC);
+    $relacion=$resultado_rel;
+
+    if ($relacion['tbl_empresa_idtbl_empresa']>0) {
+        $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
+        $consulta_emp=$pdo->prepare($sql_emp);
+        $consulta_emp->bindparam(':id',$product['tbl_empresa_idtbl_empresa']);
+        $consulta_emp->execute();
+        $resultado_emp=$consulta_emp->fetch(PDO::FETCH_ASSOC);
+        $user=$resultado_emp;
+    }elseif ($relacion['tbl_trabajador_idtbl_trabajador']>0) {
+        $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
+        $consulta_tra=$pdo->prepare($sql_tra);
+        $consulta_tra->bindparam(':id',$product['tbl_trabajador_idtbl_trabajador']);
+        $consulta_tra->execute();
+        $resultado_tra=$consulta_tra->fetch(PDO::FETCH_ASSOC);
+        $user=$resultado_tra;
+    }
+    $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=1";
+    $consulta_user=$pdo->prepare($sql_user);
+    $consulta_user->bindparam(':id',$user['tbl_user_idtbl_user']);
+    $consulta_user->execute();
+    $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
+    $user=$resultado_user;
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,8 +83,8 @@
 
             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                 <h2 class="name">
-                    PRODUCTO
-                    <small>Vendido por <a href="javascript:void(0);">VENDEDOR USER</a></small>
+                    <?php echo $product['nombre_prod'];?>
+                    <small>Vendido por <a href="perfil;"><?php echo $user['nameuser']; ?></a></small>
                     <!--<i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
@@ -58,7 +96,7 @@
                 </h2>
                 <hr />
                 <h3 class="price-container">
-                    $129.54
+                    <?php echo $product['precio'];?>
                     <small>*Incluye impuestos</small>
                 </h3>
                 <!--
@@ -75,21 +113,21 @@
                 <hr />
                 -->
                 <div class="description description-tabs">
-                    <ul id="myTab" class="nav nav-pills">
+                    <!--<ul id="myTab" class="nav nav-pills">
                         <li class="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product Description </a></li>
                         <li class=""><a href="#specifications" data-toggle="tab">Specifications</a></li>
-                        <!-- <li class=""><a href="#reviews" data-toggle="tab">Reviews</a></li> -->
-                    </ul>
+                        <li class=""><a href="#reviews" data-toggle="tab">Reviews</a></li>
+                    </ul>-->
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="more-information">
                             <br />
-                            <strong>Description Title</strong>
-                            <p>
-                                Integer egestas, orci id condimentum eleifend, nibh nisi pulvinar eros, vitae ornare massa neque ut orci. Nam aliquet lectus sed odio eleifend, at iaculis dolor egestas. Nunc elementum pellentesque augue
-                                sodales porta. Etiam aliquet rutrum turpis, feugiat sodales ipsum consectetur nec.
-                            </p>
+                            <strong>Código del producto:</strong>
+                            <p> <?php echo $product['cod_product'];?></p>
+                            <hr>
+                            <strong>Descripción</strong>
+                            <p><?php echo $product['descripcion'];?></p>
                         </div>
-                        <div class="tab-pane fade" id="specifications">
+                        <!--<div class="tab-pane fade" id="specifications">
                             <br />
                             <dl class="">
                                 <dt>Gravina</dt>
@@ -105,7 +143,7 @@
                                 <dt>Altra porta</dt>
                                 <dd>Vestibulum id ligula porta felis euismod semper</dd>
                             </dl>
-                        </div>
+                        </div>-->
                         <!-- 
                         <div class="tab-pane fade" id="reviews">
                             <br />
