@@ -17,14 +17,14 @@
     if ($relacion['tbl_empresa_idtbl_empresa']>0) {
         $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
         $consulta_emp=$pdo->prepare($sql_emp);
-        $consulta_emp->bindparam(':id',$service['tbl_empresa_idtbl_empresa']);
+        $consulta_emp->bindparam(':id',$relacion['tbl_empresa_idtbl_empresa']);
         $consulta_emp->execute();
         $resultado_emp=$consulta_emp->fetch(PDO::FETCH_ASSOC);
         $user=$resultado_emp;
     }elseif ($relacion['tbl_trabajador_idtbl_trabajador']>0) {
         $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
         $consulta_tra=$pdo->prepare($sql_tra);
-        $consulta_tra->bindparam(':id',$service['tbl_trabajador_idtbl_trabajador']);
+        $consulta_tra->bindparam(':id',$relacion['tbl_trabajador_idtbl_trabajador']);
         $consulta_tra->execute();
         $resultado_tra=$consulta_tra->fetch(PDO::FETCH_ASSOC);
         $user=$resultado_tra;

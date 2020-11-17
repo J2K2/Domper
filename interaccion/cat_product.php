@@ -1,12 +1,46 @@
 <?php
     include_once ("../dao/conexion.php");
+    $sql_rel_emp="SELECT * FROM tbl_empresa WHERE tbl_user_idtbl_user=:id";
+    $consulta_rel_emp=$pdo->prepare($sql_rel_emp);
+    $consulta_rel_emp->bindparam(':id',$_GET['id']);
+    $consulta_rel_emp->execute();
+    $resultados_rel_emp=$consulta_rel_emp->fetch(PDO::FETCH_ASSOC);
+    $relacion_emp=$resultados_rel_emp;
+    
+    $sql_rel_tra="SELECT * FROM tbl_trabajador WHERE tbl_user_idtbl_user=:id";
+    $consulta_rel_tra=$pdo->prepare($sql_rel_tra);
+    $consulta_rel_tra->bindparam(':id',$_GET['id']);
+    $consulta_rel_tra->execute();
+    $resultados_rel_tra=$consulta_rel_tra->fetch(PDO::FETCH_ASSOC);
+    $relacion_tra=$resultados_rel_tra;
 
-    $sql_todos="SELECT idtbl_product FROM tbl_product";
+    if (count($relacion_emp)>0) {
+        $relacion="empresa";
+
+        $sql_prod="SELECT idtbl_product FROM tbl_product WHERE tbl_empresa_idtbl_empresa=:id";
+        $consulta_prod=$pdo->prepare($sql_prod);
+        $consulta_prod->bindparam(':id',$relacion_emp['idtbl_empresa']);
+        $consulta_prod->execute();
+        $resultados_prod=$consulta_prod->fetchALL(PDO::FETCH_ASSOC);
+        $resultados=$resultados_prod;
+        $prod=count($resultados);
+
+    }elseif (count($relacion_tra)>0) {
+        $relacion="trabajador";
+
+        $sql_prod="SELECT idtbl_product FROM tbl_product WHERE tbl_trabajador_idtbl_trabajador=:id";
+        $consulta_prod=$pdo->prepare($sql_prod);
+        $consulta_prod->execute();
+        $consulta_prod->bindparam(':id',$relacion_tra['idtbl_trabajador']);
+        $resultados_prod=$consulta_prod->fetchALL(PDO::FETCH_ASSOC);
+        $resultados=$resultados_prod;
+        $prod=count($resultados_prod);
+    }
+    $sql_todos="SELECT idtbl_service FROM tbl_service";
     $consulta_todos=$pdo->prepare($sql_todos);
     $consulta_todos->execute();
     $resultados_todos=$consulta_todos->fetchALL(PDO::FETCH_ASSOC);
     $todos=count($resultados_todos);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,26 +230,27 @@
         <div class="row product-list">
 
            <?php 
-                if ($todos>=1) {
-                    for ($i=1;$i<=$todos;$i++){
-                        $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
-                        $consulta_product=$pdo->prepare($sql_product);
-                        $consulta_product->bindparam(':id',$i);
-                        $consulta_product->execute();
-                        $resultados_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
-                        $product=$resultados_product;
+                if ($todos>=1 and $prod>=1) {
+                    if ($relacion="empresa"){
+                        for ($i=1;$i<=$todos;$i++){
+                            $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
+                            $consulta_product=$pdo->prepare($sql_product);
+                            $consulta_product->bindparam(':id',$i);
+                            $consulta_product->execute();
+                            $resultados_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
+                            $product=$resultados_product;
+                            if ($product['tbl_empresa_idtbl_empresa']==$relacion_emp['idtbl_empresa']){
             ?>
             <div class="col-md-4">
                 <section class="panel">
                     <div class="pro-img-box">
-                        <img src=<?php //echo $resultados['foto'][$nresultados];?> alt="" />
-                        <a href="product.php:? <?php echo $product['idtbl_product'];?>" class="adtocart">
+                        <a href="product.php?id=<?php echo $product['idtbl_product'];?>" class="adtocart">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </div>
                     <div class="panel-body text-center">
                         <h4>
-                            <a href="product.php:? <?php echo $product['idtbl_product'];?>" class="pro-title">
+                        <a href="product.php?id=<?php echo $product['idtbl_product'];?>" class="pro-title">
                             <?php echo $product['nombre_prod'];?>
                             </a>
                         </h4>
@@ -224,6 +259,38 @@
                 </section>
             </div>
             <?php
+                            }
+                        }
+                    } elseif ($relacion="trabajador"){
+                        for ($i=1;$i<=$todos;$i++){
+                            $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
+                            $consulta_product=$pdo->prepare($sql_product);
+                            $consulta_product->bindparam(':id',$i);
+                            $consulta_product->execute();
+                            $resultados_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
+                            $product=$resultados_product;
+                            if ($product['tbl_trabajador_idtbl_trabajador']==$relacion_tra['idtbl_trabajador']){
+            ?>
+            <div class="col-md-4">
+                <section class="panel">
+                    <div class="pro-img-box">
+                        <a href="product.php?id=<?php echo $product['idtbl_product'];?>" class="adtocart">
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4>
+                        <a href="product.php?id=<?php echo $product['idtbl_product'];?>" class="pro-title">
+                            <?php echo $product['nombre_prod'];?>
+                            </a>
+                        </h4>
+                        <p class="price"> <?php echo $product['precio'];?></p>
+                    </div>
+                </section>
+            </div>
+            <?php
+                            }
+                        }
                     } 
                 }else {
             ?>  
@@ -237,6 +304,16 @@
                 </section>
             </div>
             <?php }?>
+            <div class="col-md-4">
+                <section class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                        <a href="crear/create_product.php" class="pro-title">
+                            <button>+</button>
+                        </h4>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 </div>

@@ -180,8 +180,8 @@
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Edita tus catálogos</i></h6>
-                      <a href="../../interaccion/cat_product.php?<?php echo $user['nameuser']?>"><button class="btn btn-outline-primary">Productos</button></a>
-                      <a href="../../interaccion/cat_service.php?<?php echo $user['nameuser']?>"><button class="btn btn-outline-primary">Servicios</button></a>
+                      <a href="../../interaccion/cat_product.php?id=<?php echo $user['idtbl_user']?>"><button class="btn btn-outline-primary">Productos</button></a>
+                      <a href="../../interaccion/cat_service.php?id=<?php echo $user['idtbl_user']?>"><button class="btn btn-outline-primary">Servicios</button></a>
                     </div>
                   </div>
                 </div>
