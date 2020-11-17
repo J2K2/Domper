@@ -119,8 +119,8 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
         <div class="card-group mb-0">
           <div class="card p-4">
             <div class="card-body">
-              <h1>Iniciar Sesion</h1>
-              <p class="text-muted">Inicia Sesion con tu cuenta</p>
+              <h1>Iniciar sesión</h1>
+              <p class="text-muted">Inicia sesión con tu cuenta</p>
               <div class="input-group mb-3">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" name="username" class="form-control" placeholder="Nombre De Usuario">
@@ -142,8 +142,8 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
           <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
             <div class="card-body text-center">
               <div>
-                <h2>Registrate</h2>
-                <p>Registrate para poder iniciar sesion y disfrutar de Domper</p>
+                <h2>Regístrate</h2>
+                <p>Regístrate para poder iniciar sesión y disfrutar de Domper</p>
                 <button type="button" class="btn btn-primary active mt-3"><a href="../register/signup.php">Registrarse ahora</a></button>
               </div>
             </div>
