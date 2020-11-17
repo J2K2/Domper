@@ -57,7 +57,7 @@ if (isset($_POST['login'])) { // Esto es para que el condicional SOLO se active 
               exit;
             }else{
               echo "<script>alert('No puedes ingresar, espera la validación de tu usuario')</script>";
-              header("location: login.php");
+              //header("location: login.php");
             }
           } elseif ($cantidad_trabajadores == 11){
             if ($resultado_buscar_tra['validacion'] == 1){

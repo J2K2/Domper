@@ -70,7 +70,7 @@
             <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
                 <div class="block-7">
                     <div class="img">   
-                    <img src="../../img/registro/trabajador.jpg" height="250px" width="350px">
+                    <img src="../../img/registro/tienda.jpg" height="250px" width="350px">
                     </div> 
                     <div class="text-center p-4">
                         <span class="excerpt d-block">Al registrarte como empresa podrás:</span><br>

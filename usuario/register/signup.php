@@ -97,16 +97,6 @@
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="../../index.html">Domper</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#about">Sobre Nosotros</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#services">Servicios</a></li>
-					<!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Portafolio</a></li>-->
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html#contact">Contáctanos</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="../login/login.php">Iniciar Sesion</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="signup.php">Registrarse</a></li>
-				</ul>
-			</div>
 		</div>
 	</nav><br>
 <form method="POST" action="signup.php" name="signin-form">
@@ -160,16 +150,6 @@
 										<div class="form-group">
 											<label>Telefono Fijo</label>
 											<input class="form-control form-control-lg" type="text" name="telefono_fijo" placeholder="Digita tu numero de telefono">
-										</div>
-										<div class="form-group">
-										<label>Tipo de Usuario</label>
-											<div class="text-center mt-4">
-												<select name="usertype">	
-													<option value="2">Usuario</option>
-													<option value="1">Trabajador</option>
-													<option value="3">Tienda</option>
-												</select>
-											</div>
 										</div>
 										<div class="text-center mt-3">
 											<button type="submit" name="register" value="register" class="btn btn-success">Registrarse</button>
