@@ -1,41 +1,40 @@
 <?php
     include_once ('../dao/conexion.php');
-    $sql_service="SELECT * FROM tbl_service WHERE idtbl_service=:id";
-    $consulta_service=$pdo->prepare($sql_service);
-    $consulta_service->bindparam(':id',$_GET['id']);
-    $consulta_service->execute();
-    $resultado_service=$consulta_service->fetch(PDO::FETCH_ASSOC);
-    $service=$resultado_service;
+    $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
+    $consulta_product=$pdo->prepare($sql_product);
+    $consulta_product->bindparam(':id',$_GET['id']);
+    $consulta_product->execute();
+    $resultado_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
+    $product=$resultado_product;
     
-    $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
-    $consulta_emp=$pdo->prepare($sql_emp);
-    $consulta_emp->bindparam(':id',$service['tbl_empresa_idtbl_empresa']);
-    $consulta_emp->execute();
-    $resultado_emp=$consulta_emp->fetch(PDO::FETCH_ASSOC);
-    $user_emp=$resultado_emp;
-    $resultado_emp=count($user_emp);
-    
-    $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
-    $consulta_tra=$pdo->prepare($sql_tra);
-    $consulta_tra->bindparam(':id',$service['tbl_trabajador_idtbl_trabajador']);
-    $consulta_tra->execute();
-    $resultado_tra=$consulta_tra->fetch(PDO::FETCH_ASSOC);
-    $user_tra=$resultado_tra;
-    $resultado_tra=count($user_tra);
-
-    if ($resultado_emp>0) {
+    if ($product['tbl_empresa_idtbl_empresa']>0) {
+        $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
+        $consulta_emp=$pdo->prepare($sql_emp);
+        $consulta_emp->bindparam(':id',$product['tbl_empresa_idtbl_empresa']);
+        $consulta_emp->execute();
+        $resultado_emp=$consulta_emp->fetchALL(PDO::FETCH_ASSOC);
+        $user_emp=$resultado_emp;
+        
         $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
         $consulta_user=$pdo->prepare($sql_user);
         $consulta_user->bindparam(':id',$user_emp['tbl_user_idtbl_user']);
         $consulta_user->execute();
         $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
         $user=$resultado_user;
-    }elseif ($resultado_tra>0) {
+        
+    }elseif ($product['tbl_trabajador_idtbl_trabajador']>0) {
+        $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
+        $consulta_tra=$pdo->prepare($sql_tra);
+        $consulta_tra->bindparam(':id',$product['tbl_trabajador_idtbl_trabajador']);
+        $consulta_tra->execute();
+        $resultado_tra=$consulta_tra->fetchALL(PDO::FETCH_ASSOC);
+        $user_tra=$resultado_tra;
+
         $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
         $consulta_user=$pdo->prepare($sql_user);
         $consulta_user->bindparam(':id',$user_tra['tbl_user_idtbl_user']);
         $consulta_user->execute();
-        $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
+        $resultado_user=$consulta_user->fetchALL(PDO::FETCH_ASSOC);
         $user=$resultado_user;
     }
 ?>
@@ -86,8 +85,7 @@
 
             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                 <h2 class="name">
-                    <?php echo $service['nombre_servicio'];?>
-                    <small>Vendido por <a href="perfil;"><?php echo $user['nameuser']; ?></a></small>
+                    <?php echo $product['nombre_prod'];?>
                     <!--<i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
@@ -99,7 +97,7 @@
                 </h2>
                 <hr />
                 <h3 class="price-container">
-                    <?php echo $service['precio'];?>
+                    <?php echo $product['precio'];?>
                     <small>*Incluye impuestos</small>
                 </h3>
                 <!--
@@ -125,10 +123,10 @@
                     <div class="tab-pane fade active in" id="more-information">
                             <br />
                             <strong>Código del servicio:</strong>
-                            <p> <?php echo $service['cod_service'];?></p>
+                            <p> <?php echo $product['cod_product'];?></p>
                             <hr>
                             <strong>Descripción</strong>
-                            <p><?php echo $service['descripcion'];?></p>
+                            <p><?php echo $product['descripcion'];?></p>
                         </div>
                         <!--<div class="tab-pane fade" id="specifications">
                             <br />

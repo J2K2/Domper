@@ -1,41 +1,18 @@
 <?php
-    include_once ('../dao/conexion.php');
-    $sql_product="SELECT * FROM tbl_product WHERE idtbl_product=:id";
-    $consulta_product=$pdo->prepare($sql_product);
-    $consulta_product->bindparam(':id',$_GET['id']);
-    $consulta_product->execute();
-    $resultado_product=$consulta_product->fetch(PDO::FETCH_ASSOC);
-    $product=$resultado_product;
-    
-    if ($product['tbl_empresa_idtbl_empresa']>0) {
-        $sql_emp="SELECT * FROM tbl_empresa WHERE idtbl_empresa=:id";
-        $consulta_emp=$pdo->prepare($sql_emp);
-        $consulta_emp->bindparam(':id',$product['tbl_empresa_idtbl_empresa']);
-        $consulta_emp->execute();
-        $resultado_emp=$consulta_emp->fetchALL(PDO::FETCH_ASSOC);
-        $user_emp=$resultado_emp;
-        
-        $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
-        $consulta_user=$pdo->prepare($sql_user);
-        $consulta_user->bindparam(':id',$user_emp['tbl_user_idtbl_user']);
-        $consulta_user->execute();
-        $resultado_user=$consulta_user->fetch(PDO::FETCH_ASSOC);
-        $user=$resultado_user;
-        
-    }elseif ($product['tbl_trabajador_idtbl_trabajador']>0) {
-        $sql_tra="SELECT * FROM tbl_trabajador WHERE idtbl_trabajador=:id";
-        $consulta_tra=$pdo->prepare($sql_tra);
-        $consulta_tra->bindparam(':id',$product['tbl_trabajador_idtbl_trabajador']);
-        $consulta_tra->execute();
-        $resultado_tra=$consulta_tra->fetchALL(PDO::FETCH_ASSOC);
-        $user_tra=$resultado_tra;
+    include_once ('../../dao/conexion.php');
+    if ($_POST) {
+        //datos de usuario
+        $nom_ser = $_POST['nom_ser'];
+        $codigo = $_POST['codigo'];
+        $precio = $_POST['precio'];
+        $descripcion = $_POST['descripcion'];
 
-        $sql_user="SELECT * FROM tbl_user WHERE idtbl_user=:id";
-        $consulta_user=$pdo->prepare($sql_user);
-        $consulta_user->bindparam(':id',$user_tra['tbl_user_idtbl_user']);
-        $consulta_user->execute();
-        $resultado_user=$consulta_user->fetchALL(PDO::FETCH_ASSOC);
-        $user=$resultado_user;
+        $sql_ins = "INSERT INTO tbl_service (nombre_servcio,cod_service,precio,descripcion)
+        values (?,?,?,?)";
+        $consulta_sql_ins = $pdo->prepare($sql_ins);
+        $consulta_sql_ins -> execute(array($nom_ser,$codigo,$precio,$descripcion));
+        var_dump($consulta_sql_ins);
+        header("Location: ../../usuario/perfil/perfil_trabajador.php");
     }
 ?>
 <!DOCTYPE html>
@@ -47,7 +24,7 @@
     <title>Producto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="product_styles.css" rel="stylesheet">
+    <link href="../product_styles.css" rel="stylesheet">
 </head>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -82,12 +59,12 @@
                     </div>
                 </div>
             </div>
-
+            <form action="" method="POST">
             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                 <h2 class="name">
-                    <?php echo $product['nombre_prod'];?>
-                    <!--<small>Vendido por <a href="perfil;"><?php// echo $user['nameuser']; ?></a></small>
-                    <i class="fa fa-star fa-2x text-primary"></i>
+                    <label>Nombre del servicio</label>
+                    <input type="text" name="nom_ser">
+                    <!--<i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
@@ -97,8 +74,8 @@
                     -->
                 </h2>
                 <hr />
-                <h3 class="price-container">
-                    <?php echo $product['precio'];?>
+                <h3 class="price-container"><label>Precio</label>
+                    <input type="number" name="precio">
                     <small>*Incluye impuestos</small>
                 </h3>
                 <!--
@@ -121,13 +98,13 @@
                         <li class=""><a href="#reviews" data-toggle="tab">Reviews</a></li>
                     </ul>-->
                     <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade active in" id="more-information">
+                    <div class="tab-pane fade active in" id="more-information">
                             <br />
-                            <strong>Código del producto:</strong>
-                            <p> <?php echo $product['cod_product'];?></p>
+                            <strong>Código del servicio:</strong>
+                            <p><input type="number" name="codigo"></p>
                             <hr>
                             <strong>Descripción</strong>
-                            <p><?php echo $product['descripcion'];?></p>
+                            <p><input type="text" name="descripcion"></p>
                         </div>
                         <!--<div class="tab-pane fade" id="specifications">
                             <br />
@@ -223,7 +200,7 @@
                 <div class="row">
                 -->
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <a href="javascript:void(0);" class="btn btn-success btn-lg">Contacto</a>
+                        <input type="submit" class="btn btn-success btn-lg" value="Crear"></a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right">

@@ -308,7 +308,7 @@
                 <section class="panel">
                     <div class="panel-body text-center">
                         <h4>
-                        <a href="crear/create_product.php" class="pro-title">
+                        <a href="crear/crear_product.php" class="pro-title">
                             <button>+</button>
                         </h4>
                     </div>
